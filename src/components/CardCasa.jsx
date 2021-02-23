@@ -28,7 +28,7 @@ class CardCasa extends Component {
                     <Link to={"/casa/"+this.props.id} className="stretched-link">
 
                     </Link>
-                    
+                   
                 </div>
             </div>
         </div>
