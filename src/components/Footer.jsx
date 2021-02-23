@@ -11,9 +11,9 @@ class Footer extends Component {
                         <div className="col">
                             <ul className="XSList">
                                 <li className="list-unstyled"><h4>XARXES SOCIALS</h4></li>
-                                <li className="list-unstyled"><a href="https://www.instagram.com/lauramanerasanso/"><i className="fab fa-instagram"></i> Segueix-nos a Instagram </a></li>
-                                <li className="list-unstyled"><a href="#"><i className="fab fa-facebook"></i> Segueix-nos a Facebook </a></li>
-                                <li className="list-unstyled"><a href="#"><i class="fab fa-twitter"></i> Segueix-nos a Twitter </a></li>
+                                <li className="list-unstyled"><a href="https://www.instagram.com/lauramanerasanso/" className="text-white"><i className="fab fa-instagram"></i> Segueix-nos a Instagram </a></li>
+                                <li className="list-unstyled"><a href="#" className="text-white"><i className="fab fa-facebook"></i> Segueix-nos a Facebook </a></li>
+                                <li className="list-unstyled"><a href="#" className="text-white"><i class="fab fa-twitter"></i> Segueix-nos a Twitter </a></li>
                             </ul>
                         </div>
                         {/*Columna2*/}
