@@ -1,0 +1,16 @@
+#cercaInici{
+    margin-top: 100px;
+    height: 750px;
+}
+
+.cercar{
+    padding-top: 300px;
+    
+}
+
+.rwcercar{
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 2%;
+    border-radius: 20px;
+}

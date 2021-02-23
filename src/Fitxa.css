@@ -1,0 +1,87 @@
+.fitxa{
+    margin-top: 100px;
+}
+
+.nom{
+    font-family: "Bungee",cursive;
+}
+
+.pob{
+    font-family: 'Nixie One', cursive;
+  
+}
+
+.img-fluid{
+    margin-bottom: 20px;
+}
+
+h5{
+    font-family: 'Noto Sans Jp';
+}
+
+.card-text{
+    font-family: 'Noto Sans Jp';
+}
+
+.tarifes{
+    background-color: rgba(150, 122,220, 0.7);
+    border-radius: 10px;
+    padding-top: 5%;
+    height: 250px;
+}
+
+.boto{
+    margin-left: 24%;
+    margin-bottom: 2%;
+}
+ul{
+    padding-inline-start: 1px;
+}
+li{
+    list-style: none;
+    font-family: 'Noto Sans Jp';  
+    font-size: 18px;  
+}
+
+i{
+    padding-right: 6px;
+}
+
+.serveis{
+    font-family: "Bungee",cursive;
+    margin-top: 4%;
+}
+
+.serv{
+    margin-top: 10%;
+}
+
+.localitzacio{
+    font-family: 'Nixie One', cursive;
+    font-size: 18px;
+}
+
+.map{
+    width:40%;
+    height:400px;
+    margin:10px;
+    
+}
+
+.borde{
+    border: 1px solid;
+    border-color: #d0d0d0;
+    border-radius: 10px;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.footer{
+    margin-top: 5%;
+}
+
+.titol{
+    font-family: "Bungee",cursive;
+}
+

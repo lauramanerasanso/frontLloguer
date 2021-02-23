@@ -1,0 +1,26 @@
+.main-footer{
+    color: white;
+    background-color: #967adc;
+    padding-top: 3em;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+a:hover {
+    color: whitesmoke;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+h4 {
+    color: white;
+    font-family: "Bungee";
+}
