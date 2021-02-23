@@ -11,6 +11,7 @@ import 'popper.js/dist/popper.js';
 import { Button } from 'react-bootstrap';
 import { Modal } from 'react-bootstrap';
 import Footer from '../components/Footer';
+import { withRouter } from "react-router";
 
 
 
@@ -326,4 +327,4 @@ class Fitxa extends React.Component {
 
 
 
-export default Fitxa;
+export default withRouter(Fitxa);
