@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import { Link } from 'react-router-dom';
 
 class CardCasa extends Component {
 
@@ -25,7 +25,10 @@ class CardCasa extends Component {
                             </tbody>
                         </table>
                     </div >
-                    <a href={"/casa/"+this.props.id} className="stretched-link"></a>
+                    <Link to={"/casa/"+this.props.id} className="stretched-link">
+
+                    </Link>
+                    
                 </div>
             </div>
         </div>
