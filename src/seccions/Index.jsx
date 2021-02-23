@@ -23,7 +23,7 @@ class Index extends Component {
 
 
   componentDidMount() {
-    axios.post('http://api.mallorcarustic.me/casa/llegir')
+    axios.post('https://api.mallorcarustic.me/casa/llegir')
       .then(res => {
         const cases = res.data;
         this.setState({ cases });
