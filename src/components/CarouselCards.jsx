@@ -56,7 +56,7 @@ class CarouselCards extends Component{
                                     return (
                                         <div className={(index == 0 ? " carousel-item active" : " carousel-item")}>
                                             <div className="col-md-4 ">
-                                                <CardCasa key={casa.id} id={casa.id} img={"http://admin.mallorcarustic.me/imatges/"+casa.img_principal} nom={casa.traduccioNom} descripcio={casa.tradDescripcio} habitacions={casa.nHabitacions} banys={casa.nBanys}/>
+                                                <CardCasa key={casa.id} id={casa.id} img={"https://admin.mallorcarustic.me/imatges/"+casa.img_principal} nom={casa.traduccioNom} descripcio={casa.tradDescripcio} habitacions={casa.nHabitacions} banys={casa.nBanys}/>
                                             </div>
                                         </div>
                                     );

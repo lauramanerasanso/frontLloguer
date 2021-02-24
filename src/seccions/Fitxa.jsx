@@ -152,23 +152,23 @@ class Fitxa extends React.Component {
 
               <div className="col-sm-6 ">
                 <a href="#" onClick={() => this.handleOnClick("img_principal")}>
-                  <img className="d-block w-100 img-fluid" src={"http://admin.mallorcarustic.me/imatges/" + this.state.info[0].img_principal} alt={this.state.info[0].tradDescripcio} />
+                  <img className="d-block w-100 img-fluid" src={"https://admin.mallorcarustic.me/imatges/" + this.state.info[0].img_principal} alt={this.state.info[0].tradDescripcio} />
                 </a>
               </div>
               <div className="col-sm-3">
                 <a id="img_2" onClick={() => this.handleOnClick("img_2")}>
-                  <img className="d-block w-100 img-fluid" src={"http://admin.mallorcarustic.me/imatges/" + this.state.info[0].img_2} alt={this.state.info[0].tradDescripcio} />
+                  <img className="d-block w-100 img-fluid" src={"https://admin.mallorcarustic.me/imatges/" + this.state.info[0].img_2} alt={this.state.info[0].tradDescripcio} />
                 </a>
                 <a id="img_3" href="#" onClick={() => this.handleOnClick("img_3")}>
-                  <img className="d-block w-100 img-fluid" src={"http://admin.mallorcarustic.me/imatges/" + this.state.info[0].img_3} alt={this.state.info[0].tradDescripcio} />
+                  <img className="d-block w-100 img-fluid" src={"https://admin.mallorcarustic.me/imatges/" + this.state.info[0].img_3} alt={this.state.info[0].tradDescripcio} />
                 </a>
               </div>
               <div className="col-sm-3">
                 <a id="img_4" href="#" onClick={() => this.handleOnClick("img_4")}>
-                  <img className="d-block w-100 img-fluid" src={"http://admin.mallorcarustic.me/imatges/" + this.state.info[0].img_4} alt={this.state.info[0].tradDescripcio} />
+                  <img className="d-block w-100 img-fluid" src={"https://admin.mallorcarustic.me/imatges/" + this.state.info[0].img_4} alt={this.state.info[0].tradDescripcio} />
                 </a>
                 <a href="#" onClick={() => this.handleOnClick("img_5")}>
-                  <img className="d-block w-100 img-fluid" src={"http://admin.mallorcarustic.me/imatges/" + this.state.info[0].img_5} alt={this.state.info[0].tradDescripcio} />
+                  <img className="d-block w-100 img-fluid" src={"https://admin.mallorcarustic.me/imatges/" + this.state.info[0].img_5} alt={this.state.info[0].tradDescripcio} />
                 </a>
               </div>
             </div>

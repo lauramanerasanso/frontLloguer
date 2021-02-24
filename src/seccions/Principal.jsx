@@ -230,7 +230,7 @@ class Principal extends Component {
                             {this.state.cases.map( function (casa, index){
                                 return (
                                 <div className="col-sm-6 col-md-4 oneCard">
-                                    <CardCasa key={casa.id} id={casa.id} img={"http://admin.mallorcarustic.me/imatges/"+casa.img_principal} nom={casa.traduccioNom} descripcio={casa.tradDescripcio} habitacions={casa.nHabitacions} banys={casa.nBanys}/>
+                                    <CardCasa key={casa.id} id={casa.id} img={"https://admin.mallorcarustic.me/imatges/"+casa.img_principal} nom={casa.traduccioNom} descripcio={casa.tradDescripcio} habitacions={casa.nHabitacions} banys={casa.nBanys}/>
                                 </div>
                                 );
                             })}
