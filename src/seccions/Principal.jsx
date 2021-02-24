@@ -8,11 +8,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'popper.js/dist/popper.js';
 import CardCasa from '../components/CardCasa';
 //import CarouselCards from '../components/CarouselCards';
-import Header from '../components/Header';
+import NouHeader from '../components/NouHeader';
 //import Cerca from '../components/Cerca';
 import Footer from '../components/Footer';
-import Index from '../seccions/Index';
-import ResultatCerca from '../seccions/ResultatCerca';
 import {Form} from 'react-bootstrap';
 import {Button} from 'react-bootstrap';
 import {Modal} from 'react-bootstrap';
@@ -64,6 +62,11 @@ class Principal extends Component {
   }
 
   componentDidMount() {
+
+    const {comprovarSessio} = this.props;
+
+    comprovarSessio();
+
     var bodyDates = new FormData();
 
     bodyDates.append('dataInici', this.state.dataInici );
@@ -170,7 +173,7 @@ class Principal extends Component {
     return (
       
         <div>
-            <Header />
+           <NouHeader tancarSessio={this.props.tancarSessio} />
             {!this.state.cercat ? (
                 <div>
                     <Cerca funcio={this.datesCerca} canviDates={this.handleChangeInput} />

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import "../Fitxa.css";
 
-import Header from '../components/Header';
+import NouHeader from '../components/NouHeader';
 import Input from "../components/Input";
 import Label from "../components/Label";
 import Icon from "../components/Icon";
@@ -38,6 +38,10 @@ class Fitxa extends React.Component {
 
   componentDidMount() {
 
+    const {comprovarSessio} = this.props;
+
+    comprovarSessio();
+
     let i = this.props.match.params.id;
 
 
@@ -56,9 +60,9 @@ class Fitxa extends React.Component {
       .then(response => {
 
         const info = response.data;
-        //console.log(info[0].img_principal);
+       
         this.setState({ info });
-        // console.log(this.state.info[0].img_principal);
+        
 
       });
 
@@ -142,7 +146,7 @@ class Fitxa extends React.Component {
     if (this.state.info.length > 0 && this.state.caract.length > 0) {
       return (
         <div>
-          <Header />
+          <NouHeader tancarSessio={this.props.tancarSessio} />
           <div className="container fitxa">
 
             <h3 className="nom">{this.state.info[0].traduccioNom}</h3>
@@ -195,19 +199,19 @@ class Fitxa extends React.Component {
                     <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
                       <div className="carousel-inner">
                         <div className={(this.state.img_principal === true ? " carousel-item active" : " carousel-item")}>
-                          <img className="d-block w-100" src={"http://admin.mallorcarustic.me/imatges/" + this.state.info[0].img_principal} alt={this.state.info[0].tradDescripcio} />
+                          <img className="d-block w-100" src={"https://admin.mallorcarustic.me/imatges/" + this.state.info[0].img_principal} alt={this.state.info[0].tradDescripcio} />
                         </div>
                         <div className={(this.state.img_2 === true ? " carousel-item active" : " carousel-item")}>
-                          <img className="d-block w-100" src={"http://admin.mallorcarustic.me/imatges/" + this.state.info[0].img_2} alt={this.state.info[0].tradDescripcio} />
+                          <img className="d-block w-100" src={"https://admin.mallorcarustic.me/imatges/" + this.state.info[0].img_2} alt={this.state.info[0].tradDescripcio} />
                         </div>
                         <div className={(this.state.img_3 ? " carousel-item active" : " carousel-item")}>
-                          <img className="d-block w-100" src={"http://admin.mallorcarustic.me/imatges/" + this.state.info[0].img_3} alt={this.state.info[0].tradDescripcio} />
+                          <img className="d-block w-100" src={"https://admin.mallorcarustic.me/imatges/" + this.state.info[0].img_3} alt={this.state.info[0].tradDescripcio} />
                         </div>
                         <div className={(this.state.img_4 ? " carousel-item active" : " carousel-item")}>
-                          <img className="d-block w-100" src={"http://admin.mallorcarustic.me/imatges/" + this.state.info[0].img_4} alt={this.state.info[0].tradDescripcio} />
+                          <img className="d-block w-100" src={"https://admin.mallorcarustic.me/imatges/" + this.state.info[0].img_4} alt={this.state.info[0].tradDescripcio} />
                         </div>
                         <div className={(this.state.img_5 ? " carousel-item active" : " carousel-item")}>
-                          <img className="d-block w-100" src={"http://admin.mallorcarustic.me/imatges/" + this.state.info[0].img_5} alt={this.state.info[0].tradDescripcio} />
+                          <img className="d-block w-100" src={"https://admin.mallorcarustic.me/imatges/" + this.state.info[0].img_5} alt={this.state.info[0].tradDescripcio} />
                         </div>
                       </div>
                       <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -315,7 +319,7 @@ class Fitxa extends React.Component {
     } else {
       return (
         <div>
-          <Header />
+          <NouHeader />
         </div>
       );
     }
