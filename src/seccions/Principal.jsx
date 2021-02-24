@@ -181,8 +181,8 @@ class Principal extends Component {
                     <div>
                         <div className="container filtres">
                             <div className="row">
-                                <input type="date" onChange={this.handleChangeInput} id="dataInici" name="dataInici" placeholder="Data Entrada" className="form-control col-sm-4"  value={this.state.dataInici}/>
-                                <input type="date" min={this.state.dataInici} onChange={this.handleChangeInput} id="dataFi" name="dataFi" placeholder="Data Sortida" className="form-control col-sm-4" value={this.state.dataFi} />
+                                <input type="date" onChange={this.handleChangeInput} id="dataInici" name="dataInici" placeholder="Data Entrada" className="form-control col-sm-4"  value={this.state.dataInici} required/>
+                                <input type="date" min={this.state.dataInici} onChange={this.handleChangeInput} id="dataFi" name="dataFi" placeholder="Data Sortida" className="form-control col-sm-4" value={this.state.dataFi} required/>
                                 <div className="col-sm-2">
                                     <Link to={"/cases/"+this.state.dataInici+"/"+this.state.dataFi}>
                                         <button className="btn btn-primary col" onClick={this.datesCerca}> Cerca </button>
