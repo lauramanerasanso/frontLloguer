@@ -18,3 +18,11 @@
 .form-check-label{
     margin-left: 10%;
 }
+
+.filtresActius{
+    color: #C0C0C0;
+}
+
+.eliminarFiltres:hover {
+    color: #707070;
+}

@@ -7,6 +7,7 @@ import NouHeader from "../components/NouHeader";
 
 import "../Login.css";
 import 'bootstrap/dist/css/bootstrap.css';
+import { Helmet } from 'react-helmet';
 
 
 class LoginNou extends React.Component {
@@ -59,6 +60,9 @@ class LoginNou extends React.Component {
 
         return (
             <div>
+                <Helmet>
+                    <title>INICI SESSIÓ · Mallorca Rustic</title>
+                </Helmet>
                 <NouHeader tancarSessio={this.props.tancarSessio} />
             
                     <div className="container login text-center">

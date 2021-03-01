@@ -24,15 +24,19 @@ h5{
 }
 
 .tarifes{
-    background-color: rgba(150, 122,220, 0.7);
+    font-family: 'Noto Sans Jp';
+    border: 1px solid #967adc;
+    background-color: rgba(150, 122,220, 0.1);
     border-radius: 10px;
     padding-top: 5%;
-    height: 250px;
+    height: 350px;
+    font-weight: bold;
 }
 
 .boto{
     margin-left: 24%;
     margin-bottom: 2%;
+    font-family: 'Noto Sans Jp';
 }
 ul{
     padding-inline-start: 1px;
@@ -49,7 +53,7 @@ i{
 
 .serveis{
     font-family: "Bungee",cursive;
-    margin-top: 4%;
+    margin-top: 5%;
 }
 
 .serv{
@@ -65,7 +69,6 @@ i{
     width:40%;
     height:400px;
     margin:10px;
-    
 }
 
 .borde{
@@ -85,3 +88,6 @@ i{
     font-family: "Bungee",cursive;
 }
 
+.react-datepicker-wrapper{
+    width: 100%;
+}

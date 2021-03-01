@@ -12,8 +12,14 @@ import { Button } from 'react-bootstrap';
 import { Modal } from 'react-bootstrap';
 import Footer from '../components/Footer';
 import { withRouter } from "react-router";
+import DatePicker from "react-datepicker";
+import { Link } from 'react-router-dom';
+import 'react-datepicker/dist/react-datepicker.css';
+import { Helmet } from 'react-helmet';
 
-
+const ExampleCustomInput = ({ value, onClick }) => (
+  <input className="form-control" value={value} onClick={onClick}/>
+);
 
 class Fitxa extends React.Component {
 
@@ -30,10 +36,20 @@ class Fitxa extends React.Component {
       img_3: false,
       img_4: false,
       img_5: false,
+      startDate: ( sessionStorage.getItem("dataInici") != null ? new Date(sessionStorage.getItem("dataInici")) : new Date()),
+      endDate: ( sessionStorage.getItem("dataFi") != null ? new Date(sessionStorage.getItem("dataFi")) : new Date()),
+      disableDatesArray: [],
+      disableDates: [],
+      preuTotal: 0,
+      goReserva: false,
     }
 
     this.handleOnClick = this.handleOnClick.bind(this);
-
+    this.calculPreu = this.calculPreu.bind(this);
+    this.sessionDates = this.sessionDates.bind(this);
+    this.changePantallaReserva = this.changePantallaReserva.bind(this);
+    this.handleCalendarClose = this.handleCalendarClose.bind(this);
+  
   }
 
   componentDidMount() {
@@ -58,12 +74,9 @@ class Fitxa extends React.Component {
       headers: { 'Content-Type': 'multipart/form-data' }
     })
       .then(response => {
-
         const info = response.data;
        
         this.setState({ info });
-        
-
       });
 
     axios({
@@ -75,15 +88,78 @@ class Fitxa extends React.Component {
       .then(response => {
 
         const caract = response.data;
-        //console.log(info[0].img_principal);
         this.setState({ caract });
-        console.log(this.state.info);
-
-
       });
 
+      var bodyDates = new FormData();
+      bodyDates.append('id', i);
+
+    axios({
+      method: 'post',
+      url: 'https://api.mallorcarustic.me/dates',
+      data: bodyDates,
+      headers: { 'Content-Type': 'multipart/form-data' }
+    })
+    .then(response => {
+
+      const dates = response.data;
+
+      this.setState({ disableDatesArray:  dates});
+
+      this.setState({disableDates: this.state.disableDatesArray.map((dat) => new Date(dat))})
+    });
+  }
+
+  sessionDates(){
+    sessionStorage.removeItem("dataInici");
+    sessionStorage.removeItem("dataFi");
+
+    const dataIni = this.state.startDate.getFullYear()+"-"+(this.state.startDate.getMonth()< 9 ? "0"+(this.state.startDate.getMonth()+1) : this.state.startDate.getMonth()+1)+"-"+(this.state.startDate.getDate()< 9 ? "0"+(this.state.startDate.getDate()) : this.state.startDate.getDate());
+    const dataFini = this.state.endDate.getFullYear()+"-"+(this.state.endDate.getMonth()< 9 ? "0"+(this.state.endDate.getMonth()+1) : this.state.endDate.getMonth()+1)+"-"+(this.state.endDate.getDate()< 9 ? "0"+(this.state.endDate.getDate()) : this.state.endDate.getDate());
+    
+    sessionStorage.setItem("dataInici", dataIni);
+    sessionStorage.setItem("dataFi", dataFini);
 
   }
+
+  calculPreu(){
+    let i = this.props.match.params.id;
+    
+    sessionStorage.removeItem("dataInici");
+    sessionStorage.removeItem("dataFi");
+
+    const dataIni = this.state.startDate.getFullYear()+"-"+(this.state.startDate.getMonth()< 9 ? "0"+(this.state.startDate.getMonth()+1) : this.state.startDate.getMonth()+1)+"-"+(this.state.startDate.getDate()< 9 ? "0"+(this.state.startDate.getDate()) : this.state.startDate.getDate());
+    const dataFini = this.state.endDate.getFullYear()+"-"+(this.state.endDate.getMonth()< 9 ? "0"+(this.state.endDate.getMonth()+1) : this.state.endDate.getMonth()+1)+"-"+(this.state.endDate.getDate()< 9 ? "0"+(this.state.endDate.getDate()) : this.state.endDate.getDate());
+    
+    sessionStorage.setItem("dataInici", dataIni);
+    sessionStorage.setItem("dataFi", dataFini);
+
+    var bodyFormData = new FormData();
+
+    bodyFormData.append('id', i);
+    bodyFormData.append('dataInici', dataIni);
+    bodyFormData.append('dataFi', dataFini);
+
+    axios({
+      method: 'post',
+      url: 'http://api.home:8080/dates/preuTotal',
+      data: bodyFormData,
+      headers: { 'Content-Type': 'multipart/form-data' }
+    })
+      .then(response => {
+
+        const preu = response.data;
+       
+        this.setState({ preuTotal: preu });
+        
+
+      });
+  }
+  changePantallaReserva(){
+    this.sessionDates();
+    this.setState({goReserva: true})
+  }
+
   handleOnClick(id) {
 
     switch (id) {
@@ -93,15 +169,14 @@ class Fitxa extends React.Component {
         this.setState({ img_3: false });
         this.setState({ img_4: false });
         this.setState({ img_5: false });
-
         break;
+
       case 'img_2':
         this.setState({ img_principal: false });
         this.setState({ img_2: true });
         this.setState({ img_3: false });
         this.setState({ img_4: false });
         this.setState({ img_5: false });
-
         break;
 
       case 'img_3':
@@ -110,7 +185,6 @@ class Fitxa extends React.Component {
         this.setState({ img_3: true });
         this.setState({ img_4: false });
         this.setState({ img_5: false });
-
         break;
 
       case 'img_4':
@@ -119,7 +193,6 @@ class Fitxa extends React.Component {
         this.setState({ img_3: false });
         this.setState({ img_4: true });
         this.setState({ img_5: false });
-
         break;
 
       case 'img_5':
@@ -128,27 +201,25 @@ class Fitxa extends React.Component {
         this.setState({ img_3: false });
         this.setState({ img_4: false });
         this.setState({ img_5: true });
-
         break;
-
-
     }
-
-
-
     this.setState({ show: true });
   }
 
+  handleCalendarClose(){
+    this.setState({calendariSortidaOpen : true});
+  }
 
   render() {
-
-
     if (this.state.info.length > 0 && this.state.caract.length > 0) {
       return (
         <div>
           <NouHeader tancarSessio={this.props.tancarSessio} />
+          {!this.state.goReserva ? 
           <div className="container fitxa">
-
+            <Helmet>
+              <title>{this.state.info[0].traduccioNom} · Mallorca Rustic</title>
+            </Helmet>
             <h3 className="nom">{this.state.info[0].traduccioNom}</h3>
 
 
@@ -258,40 +329,84 @@ class Fitxa extends React.Component {
                           <li><Icon tipo={caract.caracteristica_id - 1} />  {caract.traduccioNom}</li>
                         </div>
                       );
-                    })
-
-                    }
+                    })}
+                    
                   </div>
 
                 </ul>
               </div>
-              <div className="col-6">
+              <div className="col-md-6">
                 <div className="tarifes">
-                  <h3 className="nom text-white text-center"> Tarifes</h3>
+                  <h3 className="nom text-center"> Disponibilitat</h3>
                   <div className="container">
                     <div className="row">
-                      <div className='col-6'>
-                        <Label text="Data Inici" classe="text-white text-center" />
-                        <Input
-                          atributs={{
-                            name: 'dataInici',
-                            inputType: 'date',
-                            ph: ''
-
-                          }}
-                          handleChange={this.handleChange} />
+                      <div className="col-6 dates">
+                        <Label text="Entrada" classe="text-center" />
+                        <DatePicker
+                          customInput={<ExampleCustomInput />}
+                          dateFormat="yyyy-MM-dd"
+                          selected={this.state.startDate}
+                          onChange={date => this.setState({startDate: date, endDate: date, preuTotal: 0})}
+                          selectsStart
+                          excludeDates={this.state.disableDates}
+                          startDate={this.state.startDate}
+                          minDate={new Date()}
+                          endDate={this.state.endDate}
+                          required={true}
+                          withPortal
+                        />
+                        
                       </div>
-                      <div className='col-6'>
-                        <Label text="Data Fi" classe="text-white text-center" />
-                        <Input
-                          atributs={{
-                            name: 'dataFi',
-                            inputType: 'date',
-                            ph: ''
-
-                          }}
-                          handleChange={this.handleChange} />
+                      <div className="col-6 dates">
+                        <Label text="Sortida" classe="text-center" />
+                        <DatePicker
+                          customInput={<ExampleCustomInput />}
+                          dateFormat="yyyy-MM-dd"
+                          selected={this.state.endDate}
+                          onChange={date => this.setState({endDate: date})}
+                          selectsEnd
+                          excludeDates={this.state.disableDates}
+                          startDate={this.state.startDate}
+                          endDate={this.state.endDate}
+                          minDate={this.state.startDate}
+                          required={true}
+                          withPortal
+                        />
                       </div>
+                    </div>
+                    <br/>
+                    <hr/>
+                    <div className="row">
+                      
+                        <div className="col-12">
+                          <Button variant="outline-primary col" className="botoPreu" onClick={this.calculPreu}>Calcula el preu</Button>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div className="col preu">
+                          {(this.state.preuTotal === 0 ? "" : "PREU TOTAL: "+this.state.preuTotal+" € ")}
+                        </div>
+                        
+                    </div>
+                    
+                    <hr/>
+                    <div className="row">
+                      {!this.props.loggeat ? 
+                      <div className="row col">
+                        <div className="col-7"> Has d'iniciar sessió per reservar.</div>
+                        <div className="col-5">
+                          <Link to="/iniciSessio">
+                            <Button variant="primary col" className="botoModalIniciSessió" onClick={this.sessionDates}>Inicia Sessió</Button>
+                          </Link>
+                        </div>
+                      </div>
+                      : 
+                        <div className="col"> 
+                          <Button variant="primary col" onClick={this.changePantallaReserva}>
+                              Reserva
+                          </Button>
+                        </div>
+                      }
                     </div>
                   </div>
                 </div>
@@ -308,13 +423,18 @@ class Fitxa extends React.Component {
             </div>
 
           </div>
+          :
+            <div>
+              <Helmet>
+                <title> RESERVA · Mallorca Rustic</title>
+              </Helmet>
+              Pantalla reserva 
+            </div>
+          }
           <div className="footer">
             <Footer />
           </div>
         </div>
-
-
-
       );
     } else {
       return (

@@ -24,6 +24,8 @@ class Cerca extends Component{
     
     handleChangeInput(event){
       this.setState({[event.target.name]: event.target.value});
+      sessionStorage.removeItem([event.target.name]);
+      sessionStorage.setItem([event.target.name], event.target.value);
     }
 
     handleShow(){
@@ -40,43 +42,28 @@ class Cerca extends Component{
             <div id="cercaInici" style={{ backgroundImage: "url("+foto+")", backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundSize: "cover"}}>
             <div className="container cercar">
                 <div className="row rwcercar col-8 offset-2">
-                        <input type="date" onChange={this.props.canviDates} onChange={this.handleChangeInput} id="dataInici" name="dataInici" placeholder="Data Entrada" className="form-control col-md-6 col-lg-5"/>
-                        <input type="date" min={this.state.dataInici} onChange={this.props.canviDates} onChange={this.handleChangeInput} id="dataFi" name="dataFi" placeholder="Data Sortida" className="form-control col-md-6 col-lg-5" />
+                        <input type="date" onChange={this.props.canviDates} onChange={this.handleChangeInput} id="dataInici" name="dataInici" placeholder="Data Entrada" className="form-control col-md-6 col-lg-4"/>
+                        <input type="date" min={this.state.dataInici} onChange={this.props.canviDates} onChange={this.handleChangeInput} id="dataFi" name="dataFi" placeholder="Data Sortida" className="form-control col-md-6 col-lg-4" />
                         
                         
                         {(this.state.dataInici == '' && this.state.dataFi == '') ? 
-                            <div className="col-lg-2">
+                            <div className="col-lg-4">
                                 <Link to={"/cases/totes/"}>
-                                    <Button variant="primary" onClick={this.showAllCards}>
-                                        Cerca
+                                    <Button variant="primary col" onClick={this.showAllCards} onClick={this.props.datesCerca}>
+                                    <i class="fas fa-search"></i>  Cerca
                                     </Button>
                                 </Link>
                             </div>
                          :  
                             <div className="col-lg-2">
                                 <Link to={"/cases/"+this.state.dataInici+"/"+this.state.dataFi}>
-                                    <button className="btn btn-primary col" onClick={this.datesCerca}> Cerca </button>
+                                    <button className="btn btn-primary col" onClick={this.props.datesCerca}> Cerca </button>
                                 </Link>
                             </div>
                           }
-                            
-                        
                 </div>
             </div>
             </div>
-            <Modal show={this.state.show} onHide={this.handleClose}>
-            <Modal.Body closeButton>
-                <div>Ups... no has introduït dates per la cerca, vols veure totes les cases?</div>
-            </Modal.Body>
-            <Modal.Footer>
-            <Link to={"/cases/"+true+"/"}>
-                <Button variant="primary" onClick={this.showAllCards}>
-                    Veure totes les cases
-                </Button>
-            </Link>
-
-            </Modal.Footer>
-          </Modal>
         </div>
       );
     }

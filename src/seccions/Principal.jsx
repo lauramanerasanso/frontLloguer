@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-//import logo from './logo.svg';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'popper.js/dist/popper.js';
@@ -7,9 +6,7 @@ import '../AppCerca.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'popper.js/dist/popper.js';
 import CardCasa from '../components/CardCasa';
-//import CarouselCards from '../components/CarouselCards';
 import NouHeader from '../components/NouHeader';
-//import Cerca from '../components/Cerca';
 import Footer from '../components/Footer';
 import {Form} from 'react-bootstrap';
 import {Button} from 'react-bootstrap';
@@ -20,7 +17,7 @@ import CarouselCards from '../components/CarouselCards';
 import Cerca from '../components/Cerca';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
-
+import { Helmet } from 'react-helmet';
 //import {Route, BrowserRouter, NavLink} from "react-router-dom";
 
 
@@ -59,6 +56,7 @@ class Principal extends Component {
     this.datesCerca = this.datesCerca.bind(this);
     this.handleChangeInput = this.handleChangeInput.bind(this);
     this.showAllCards = this.showAllCards.bind(this);
+    this.eliminarFiltres = this.eliminarFiltres.bind(this);
   }
 
   componentDidMount() {
@@ -113,12 +111,38 @@ class Principal extends Component {
     this.setState({[event.target.name]: event.target.value});
   }
 
+  eliminarFiltres(){
+    var bodyDates = new FormData();
+
+    bodyDates.append('dataInici', this.state.dataInici );
+
+    bodyDates.append('dataFi', this.state.dataFi ); 
+
+    axios({
+      method: 'post',
+      url: 'https://api.mallorcarustic.me/cases',
+      data: bodyDates,
+      headers: {'Content-Type': 'multipart/form-data' }
+      })
+      .then(res => {
+        const cases = res.data;
+        this.setState({ cases: cases });
+    })
+  }
+
   filtrar(){
+    this.setState({caractFiltrades : []});
     var isCheck = [];
     $("input[type=checkbox]:checked").each(function () {
       isCheck.push($(this).val());
     });
-    this.state.checked= isCheck;
+
+    for(var i = 0 ; i < isCheck.length ; i++ ){
+      this.state.caractFiltrades.push(this.state.caracteristiques[isCheck[i]-1].traduccioNom)
+    }
+  
+    console.log(this.state.caractFiltrades);
+
     console.log(this.state.checked);
 
     var bodyCaract = new FormData();
@@ -144,8 +168,13 @@ class Principal extends Component {
   }
 
   datesCerca(){
-      console.log("mem");
+    sessionStorage.removeItem("dataInici");
+    sessionStorage.removeItem("dataFi");
+
     this.setState({cercat: true });
+
+    sessionStorage.setItem("dataInici", this.state.dataInici);
+    sessionStorage.setItem("dataFi", this.state.dataFi);
 
     var bodyDates = new FormData();
 
@@ -182,21 +211,38 @@ class Principal extends Component {
               )
                 : (
                     <div>
-                        <div className="container filtres">
-                            <div className="row">
+                      <Helmet>
+                        <title>CASES · Mallorca Rustic</title>
+                      </Helmet>
+                      <div className="container filtres">
+                              <div className="row">
                                 <input type="date" onChange={this.handleChangeInput} id="dataInici" name="dataInici" placeholder="Data Entrada" className="form-control col-sm-4"  value={this.state.dataInici} required/>
                                 <input type="date" min={this.state.dataInici} onChange={this.handleChangeInput} id="dataFi" name="dataFi" placeholder="Data Sortida" className="form-control col-sm-4" value={this.state.dataFi} required/>
-                                <div className="col-sm-2">
-                                    <Link to="/cases/totes/">
-                                        <button className="btn btn-primary col" onClick={this.datesCerca}> Cerca </button>
-                                    </Link>
-                                </div>
-                                <div className="col-sm-2">
-                                <Button variant="outline-primary" onClick={this.handleShow}>
+                                {(this.state.dataInici == '' && this.state.dataFi == '') ? 
+                                  <div className="col-sm-4 col-lg-2">
+                                      <Link to={"/cases/totes/"}>
+                                          <Button variant="primary col" onClick={this.showAllCards} onClick={this.datesCerca}>
+                                          <i class="fas fa-search"></i>  Cerca
+                                          </Button>
+                                      </Link>
+                                  </div>
+                                :  
+                                  <div className="col-sm-4 col-lg-2">
+                                      <Link to={"/cases/"+this.state.dataInici+"/"+this.state.dataFi}>
+                                          <button className="btn btn-primary col" onClick={this.datesCerca}> <i class="fas fa-search"></i>  Cerca </button>
+                                      </Link>
+                                  </div>
+                                }
+                                <div className="col-lg-2">
+                                <Button variant="outline-primary col-4 col-lg" onClick={this.handleShow}>
                                     Filtres
                                 </Button>
-                                </div>
-                            </div>
+                              </div>
+                              <div className="row filtresActius"> 
+                                {this.state.caractFiltrades}
+                                <div className="col eliminarFiltres" onClick={this.eliminarFiltres}><i class="fas fa-times"></i> Eliminar tots els filtres</div>
+                              </div>
+                        </div>
                         <Modal show={this.state.show} onHide={this.handleClose}>
                             <Modal.Header closeButton>
                             <Modal.Title>Filtres</Modal.Title>
@@ -212,7 +258,6 @@ class Principal extends Component {
                                             <Icon tipo={caract.caracteristica_id - 1}/> {caract.traduccioNom}
                                         </label>
                                         </div>
-                                        
                                     );
                                 })}
                                 </div>
@@ -244,8 +289,6 @@ class Principal extends Component {
                 )}
             <Footer />                   
         </div>
-      
-      
     );
   }
 }

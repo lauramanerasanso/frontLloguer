@@ -12,11 +12,8 @@ import UsuariContext from './context/UsuariContext';
 
 class App extends Component {
 
-
-
   constructor(props) {
     super(props);
-
 
     this.state = {
       iniciat: false
@@ -25,7 +22,6 @@ class App extends Component {
     this.comprovarSessio = this.comprovarSessio.bind(this);
     this.tancarSessio = this.tancarSessio.bind(this);
 
-    
   }
 
   comprovarSessio() {
@@ -51,7 +47,6 @@ class App extends Component {
           localStorage.setItem("email", response.data.email);
           this.setState({ iniciat: true });
 
-
         } else {
 
           localStorage.removeItem("token");
@@ -59,9 +54,7 @@ class App extends Component {
           this.setState({ iniciat: false });
 
         }
-
       });
-
   };
 
   componentDidMount() {
@@ -69,8 +62,6 @@ class App extends Component {
   };
 
   iniciaSessio = (usuari, password) => {
-
-    
 
     var bodyFormData = new FormData();
     bodyFormData.append("usuari", usuari);
@@ -91,7 +82,6 @@ class App extends Component {
           localStorage.setItem("email", response.data.email);
           window.location = "/";
 
-
         } else {
 
           localStorage.removeItem("token");
@@ -99,9 +89,7 @@ class App extends Component {
           this.setState({ iniciat: false });
 
         }
-
       });
-
   };
 
   tancarSessio(){
@@ -114,8 +102,6 @@ class App extends Component {
 
   render() {
     return (
-
-
       <Router>
         <UsuariContext.Provider value={this.state.iniciat}>
           <div className="App">
@@ -125,7 +111,7 @@ class App extends Component {
 
             <Route path="/iniciSessio" render={() => <LoginNou iniciaSessio={this.iniciaSessio} comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} />} />
 
-            <Route path="/casa/:id" render={() => <Fitxa comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} />} />
+            <Route path="/casa/:id" render={() => <Fitxa comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} loggeat={this.state.iniciat} />} />
 
           </div>
         </UsuariContext.Provider>

@@ -1,5 +1,3 @@
-
-
 .login{
     width: 75%;
     height: 100%;
@@ -12,8 +10,6 @@
     0 4px 13px rgba(0, 0, 0, 0.1),
     0 8px 38px rgba(0, 0, 0, 0.1),
     0 16px 38px rgba(0, 0, 0, 0.1);;
-   
-    
 }
 
 body{
@@ -26,10 +22,10 @@ body{
     line-height: 25px;
     margin-bottom: 3%;
 }
+
 .label{
     font-family: 'Noto Sans JP';
 }
-
 
 .errorStyle {
     width: 100%;
@@ -45,9 +41,6 @@ body{
     font-weight: 600;
    
 }
-
-
-
 
 
 @media screen and (min-width: 1030px) {
