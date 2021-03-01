@@ -142,7 +142,7 @@ class Fitxa extends React.Component {
 
     axios({
       method: 'post',
-      url: 'http://api.home:8080/dates/preuTotal',
+      url: 'https://api.mallorcarustic.me/dates/preuTotal',
       data: bodyFormData,
       headers: { 'Content-Type': 'multipart/form-data' }
     })
