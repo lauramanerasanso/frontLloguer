@@ -4,7 +4,7 @@ import '../Cerca.css';
 import { Link } from 'react-router-dom';
 import {Button} from 'react-bootstrap';
 import {Modal} from 'react-bootstrap';
-
+import Traduccio from "../components/Traduccio";
 
 class Cerca extends Component{
 
@@ -50,14 +50,14 @@ class Cerca extends Component{
                             <div className="col-lg-4">
                                 <Link to={"/cases/totes/"}>
                                     <Button variant="primary col" onClick={this.showAllCards} onClick={this.props.datesCerca}>
-                                    <i class="fas fa-search"></i>  Cerca
+                                    <i class="fas fa-search"></i> <Traduccio string="cerca" />
                                     </Button>
                                 </Link>
                             </div>
                          :  
                             <div className="col-lg-2">
                                 <Link to={"/cases/"+this.state.dataInici+"/"+this.state.dataFi}>
-                                    <button className="btn btn-primary col" onClick={this.props.datesCerca}> Cerca </button>
+                                    <button className="btn btn-primary col" onClick={this.props.datesCerca}> <Traduccio string="cerca" /> </button>
                                 </Link>
                             </div>
                           }

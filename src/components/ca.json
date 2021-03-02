@@ -1,0 +1,36 @@
+{
+    "inici-sessio":"Iniciar sessió",
+    "registrar":"Registra't",
+    "tancar-sessio": "Tancar sessió",
+    "idioma.angles":"Anglès",
+    "idioma.catala":"Català",
+    "cerca":"Cerca",
+    "footer.xarxes":"Xarxes Socials",
+    "footer.desenv":"Desenvolupadors",
+    "footer.prof":"Professors",
+    "footer.segueixnos":"Segueix-nos a",
+    "filtres":"Filtres",
+    "imatges":"Veure totes les imatges",
+    "disponible":"Disponibilitat",
+    "entrada":"Entrada",
+    "sortida":"Sortida",
+    "distribucio":"Distribució",
+    "habitacions":"Habitacions",
+    "banys":"Banys",
+    "serveis":"Serveis",
+    "ubicacio":"Ubicació",
+    "contrasenya":"Contrasenya",
+    "text1": "Si encara no teniu compte d'usuari de ",
+    "text2" :" , utilitzeu aquesta opció per accedir al formulari de registre. Us sol·licitarem la informació imprescindible per agilitzar el procés de reserva.",
+    "error" : "L'email o contrasenya són incorrectes",
+    "calcula-preu": "Calcula el preu",
+    "inici-reserva": "Has d'iniciar sessió per reservar",
+    "preu": "PREU TOTAL :",
+    "reserva": "Reserva",
+    "tancar": "Tancar",
+    "filtrar": "Filtrar"
+
+
+
+
+}

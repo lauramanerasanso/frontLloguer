@@ -6,23 +6,35 @@ import 'popper.js/dist/popper.js';
 import Fitxa from './seccions/Fitxa';
 import Principal from './seccions/Principal';
 import LoginNou from './seccions/LoginNou';
-import { BrowserRouter as Router, Route, useHistory } from "react-router-dom";
+import { BrowserRouter as Router, Route, useHistory , Redirect, withRouter} from "react-router-dom";
 import UsuariContext from './context/UsuariContext';
+import IdiomaContext from './context/IdiomaContext';
+
 
 
 class App extends Component {
 
+
+
   constructor(props) {
     super(props);
 
+
     this.state = {
-      iniciat: false
+      iniciat: false,
+      error : false,
+      llenguatge : "ca",
+     
     };
 
     this.comprovarSessio = this.comprovarSessio.bind(this);
     this.tancarSessio = this.tancarSessio.bind(this);
-
+   
+    
   }
+
+
+
 
   comprovarSessio() {
 
@@ -35,7 +47,7 @@ class App extends Component {
 
     axios({
       method: 'post',
-      url: 'https://api.mallorcarustic.me/usuari/comprovar-login',
+      url: 'http://api.home/usuari/comprovar-login',
       data: bodyFormData,
       headers: { 'Content-Type': 'multipart/form-data' }
     })
@@ -47,21 +59,40 @@ class App extends Component {
           localStorage.setItem("email", response.data.email);
           this.setState({ iniciat: true });
 
+
         } else {
 
           localStorage.removeItem("token");
           localStorage.removeItem("email");
           this.setState({ iniciat: false });
+          
 
         }
+
       });
+
   };
 
   componentDidMount() {
+
     this.comprovarSessio();
+
+    if(localStorage.getItem("idioma") == undefined){
+      localStorage.setItem("idioma", "ca");
+      this.setState({llenguatge : "ca" });
+    }else{
+
+      const id = localStorage.getItem("idioma")
+
+      this.setState({llenguatge : id})
+    }
+    
   };
 
+
   iniciaSessio = (usuari, password) => {
+
+    
 
     var bodyFormData = new FormData();
     bodyFormData.append("usuari", usuari);
@@ -69,7 +100,7 @@ class App extends Component {
 
     axios({
       method: 'post',
-      url: 'https://api.mallorcarustic.me/usuari/login',
+      url: 'http://api.home/usuari/login',
       data: bodyFormData,
       headers: { 'Content-Type': 'multipart/form-data' }
     })
@@ -80,16 +111,20 @@ class App extends Component {
           this.setState({ iniciat: true });
           localStorage.setItem("token", response.data.token);
           localStorage.setItem("email", response.data.email);
-          window.location = "/";
+          this.props.history.goBack();
+
 
         } else {
 
           localStorage.removeItem("token");
           localStorage.removeItem("email");
           this.setState({ iniciat: false });
+          this.setState({error : true});
 
         }
+
       });
+
   };
 
   tancarSessio(){
@@ -100,27 +135,38 @@ class App extends Component {
 
   };
 
+  canviarLlenguatge = (id) => {
+    localStorage.setItem("idioma",id);
+    this.setState({
+      llenguatge : localStorage.getItem("idioma")
+    });
+ };
+
   render() {
     return (
-      <Router>
+
+
         <UsuariContext.Provider value={this.state.iniciat}>
+          <IdiomaContext.Provider value={this.state.llenguatge}>
+         
           <div className="App">
-            <Route exact path="/" render={() => <Principal comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} />} />
-            <Route exact path="/cases/:di/:df" render={() => <Principal comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} />} />
-            <Route exact path="/cases/:esCercat/" render={() => <Principal comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} />} />
+            <Route exact path="/" render={() => <Principal key={"principal-"+this.state.llenguatge} comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} canviarLlenguatge={this.canviarLlenguatge} />} />
+            <Route exact path="/cases/:di/:df" render={() => <Principal key={"principal-"+this.state.llenguatge} comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} canviarLlenguatge={this.canviarLlenguatge} />} />
+            <Route exact path="/cases/:esCercat/" render={() => <Principal key={"principal-"+this.state.llenguatge} comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} canviarLlenguatge={this.canviarLlenguatge} />} />
 
-            <Route path="/iniciSessio" render={() => <LoginNou iniciaSessio={this.iniciaSessio} comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} />} />
+            <Route path="/iniciSessio" render={() => <LoginNou key={"Login-"+this.state.llenguatge} iniciaSessio={this.iniciaSessio} comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} error={this.state.error} canviarLlenguatge={this.canviarLlenguatge} />} />
 
-            <Route path="/casa/:id" render={() => <Fitxa comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} loggeat={this.state.iniciat} />} />
+            <Route path="/casa/:id" render={() => <Fitxa key={"fitxa-"+this.state.llenguatge} comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} canviarLlenguatge={this.canviarLlenguatge} loggeat={this.state.iniciat} />} />
 
           </div>
+         
+          </IdiomaContext.Provider>
         </UsuariContext.Provider>
 
-      </Router>
 
 
     );
   }
 }
 
-export default App;
+export default withRouter(App);

@@ -1,0 +1,35 @@
+{
+    "inici-sessio":"Log in",
+    "registrar":"Sign Up",
+    "tancar-sessio": "Sign out",
+    "idioma.angles":"English",
+    "idioma.catala":"Catalan",
+    "cerca":"Search",
+    "footer.xarxes":"Social Networks",
+    "footer.desenv":"Developers",
+    "footer.prof":"Teachers",
+    "footer.segueixnos":"Follow us on",
+    "filtres":"Filters",
+    "imatges":"See all images",
+    "disponible":"Availability",
+    "entrada":"Check in",
+    "sortida":"Check out",
+    "distribucio":"Distribution",
+    "habitacions":"Bedrooms",
+    "banys":"Bathrooms",
+    "serveis":"Amenities",
+    "ubicacio":"Location",
+    "contrasenya":"Password",
+    "text1": "If you still don't have a ",
+    "text2" :" , use this option to acces the sign up form. We will ask you for the essential information to speed up the booking process.",
+    "error" : "The email or password don't match",
+    "calcula-preu": "Get the price",
+    "inici-reserva": "You need to login first",
+    "preu": "TOTAL PRICE :",
+    "reserva": "Book",
+    "tancar": "Close",
+    "filtrar": "Filter"
+
+
+
+}
