@@ -80,7 +80,7 @@ class Principal extends Component {
 
     axios({
       method: 'post',
-      url: 'http://api.home/cases',
+      url: 'https://api.mallorcarustic.me/cases',
       data: bodyDates,
       headers: {'Content-Type': 'multipart/form-data' }
       })
@@ -95,7 +95,7 @@ class Principal extends Component {
 
     axios({
       method: 'post',
-      url: 'http://api.home/caracteristiques/llegir',
+      url: 'https://api.mallorcarustic.me/caracteristiques/llegir',
       data: bodyIdioma,
       headers: {'Content-Type': 'multipart/form-data' }
       })
@@ -138,7 +138,7 @@ class Principal extends Component {
     console.log(bodyCaract);
     axios({
       method: 'post',
-      url: 'http://api.home/filtrarCaracteristiques',
+      url: 'https://api.mallorcarustic.me/filtrarCaracteristiques',
       data: bodyCaract,
       headers: {'Content-Type': 'multipart/form-data' }
       })
@@ -165,7 +165,7 @@ class Principal extends Component {
 
     axios({
       method: 'post',
-      url: 'http://api.home/cases',
+      url: 'https://api.mallorcarustic.me/cases',
       data: bodyDates,
       headers: {'Content-Type': 'multipart/form-data' }
       })

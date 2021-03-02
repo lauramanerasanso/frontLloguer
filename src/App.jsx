@@ -47,7 +47,7 @@ class App extends Component {
 
     axios({
       method: 'post',
-      url: 'http://api.home/usuari/comprovar-login',
+      url: 'https://api.mallorcarustic.me/usuari/comprovar-login',
       data: bodyFormData,
       headers: { 'Content-Type': 'multipart/form-data' }
     })
@@ -100,7 +100,7 @@ class App extends Component {
 
     axios({
       method: 'post',
-      url: 'http://api.home/usuari/login',
+      url: 'https://api.mallorcarustic.me/usuari/login',
       data: bodyFormData,
       headers: { 'Content-Type': 'multipart/form-data' }
     })

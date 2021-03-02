@@ -71,7 +71,7 @@ class Fitxa extends React.Component {
 
     axios({
       method: 'post',
-      url: 'http://api.home/casa/llegir-casa',
+      url: 'https://api.mallorcarustic.me/casa/llegir-casa',
       data: bodyFormData,
       headers: { 'Content-Type': 'multipart/form-data' }
     })
@@ -86,7 +86,7 @@ class Fitxa extends React.Component {
 
     axios({
       method: 'post',
-      url: 'http://api.home/casa/llegir-caract',
+      url: 'https://api.mallorcarustic.me/casa/llegir-caract',
       data: bodyFormData,
       headers: { 'Content-Type': 'multipart/form-data' }
     })
