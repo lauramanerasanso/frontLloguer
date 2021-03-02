@@ -25,7 +25,7 @@ class CardCasa extends Component {
                             </tbody>
                         </table>
                     </div >
-                    <Link to={"/casa/"+this.props.id} target="_blank" className="stretched-link">
+                    <Link to={"/casa/"+this.props.id}  className="stretched-link">
 
                     </Link>
                    
