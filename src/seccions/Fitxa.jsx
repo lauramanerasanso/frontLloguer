@@ -223,7 +223,7 @@ class Fitxa extends React.Component {
     if (this.state.info.length > 0 && this.state.caract.length > 0) {
       return (
         <div>
-          <NouHeader tancarSessio={this.props.tancarSessio} />
+          <NouHeader tancarSessio={this.props.tancarSessio}  canviarLlenguatge={this.props.canviarLlenguatge} />
           {!this.state.goReserva ?
             <div className="container fitxa">
               <Helmet>
