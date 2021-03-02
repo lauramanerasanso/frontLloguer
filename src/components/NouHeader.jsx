@@ -11,6 +11,9 @@ import BotoLink from "../components/BotoLink"
 import '../Header.css';
 import Traduccio from "../components/Traduccio";
 import 'bootstrap/js/src/dropdown.js';
+import 'bootstrap/js/src/collapse.js';
+import 'popper.js/dist/popper.js';
+
 
 const Img = () => {
 

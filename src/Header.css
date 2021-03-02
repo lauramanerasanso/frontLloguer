@@ -1,3 +1,20 @@
 .navbar{
     background-color: rgba(255,255,255, 0.9);
 }
+
+  .custom-toggler.navbar-toggler {
+    
+    border-color:#976acd  !important;
+    color: #976acd !important;
+    align-items: center;
+    
+  } 
+
+  .fa-bars{
+      padding: 0 !important;
+  }
+
+  .bandera{
+      margin: 0 !important;
+ 
+  }
