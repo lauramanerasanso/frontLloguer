@@ -33,7 +33,8 @@
     "anteriors-res" : "Reserves passades",
     "desde" : "Del ",
     "fins"  : " fins al ",
-    "reserves" : "Reserves"
+    "reserves" : "Reserves",
+    "no-reserves": "No tens cap reserva"
 
 
 

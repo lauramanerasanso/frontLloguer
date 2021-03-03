@@ -128,14 +128,15 @@ class Reserves extends React.Component {
                     <div>
                         <NouHeader tancarSessio={this.props.tancarSessio} canviarLlenguatge={this.props.canviarLlenguatge} />
                         <div className="container reserves">
-                        <h4 className="meves"> <Traduccio string="proximes-res"/></h4>
+                            {this.state.info_proxim < 1 && this.state.info < 1 && <h4 className="titol"><Traduccio string="no-reserves"/></h4>}
+                        <h4 className="meves"> {this.state.info_proxim.length > 0 ? <Traduccio string="proximes-res"/> : ""}</h4>
                             {this.state.info_proxim.map(function (item, key) {
                                     return (
                                         <CardReserva key={key} id={item.casa_id} descripcio={item.tradDescripcio} nom={item.traduccioNom} entrada={item.entrada} sortida={item.sortida} preu={item.preu_final} pob={item.nom}/>                                         
                                        
                                     )
                                 })}
-                            <h4 className="meves mt-5 mb-4"><Traduccio string="anteriors-res" /> </h4>
+                            <h4 className="meves mt-5 mb-4"> {this.state.info.length > 0 ? <Traduccio string="anteriors-res" /> :" "} </h4>
                             {this.state.info.map(function (item, key) {
                                     return (
                                         <CardReserva key={key} id={item.casa_id} descripcio={item.tradDescripcio} nom={item.traduccioNom} entrada={item.entrada} sortida={item.sortida} preu={item.preu_final} pob={item.nom}/>                                         
