@@ -14,7 +14,6 @@ import 'bootstrap/js/src/dropdown.js';
 import 'bootstrap/js/src/collapse.js';
 import 'popper.js/dist/popper.js';
 
-
 const Img = () => {
 
     if(localStorage.getItem("idioma") === "en"){
@@ -46,8 +45,7 @@ function NouHeader(props) {
                 <button className="navbar-toggler custom-toggler text-center" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <i className="fas fa-bars"></i>
                 </button>
-                <div className="collapse navbar-collapse"
-                    id="navbarSupportedContent" >
+                <div className="collapse navbar-collapse" id="navbarSupportedContent" >
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
                             <div className="dropdown">
@@ -68,7 +66,9 @@ function NouHeader(props) {
                                     <i className="fas fa-user"></i> {email}
                                 </button>
                                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a className="dropdown-item" onClick={props.tancarSessio}> <i class="fas fa-sign-out-alt"></i><Traduccio string="tancar-sessio" /></a>
+                                    <a className="dropdown-item" href={"/reserves"}><i class="fas fa-suitcase"></i> <Traduccio string="reserves" /></a>
+                                    <a className="dropdown-item" onClick={props.tancarSessio}><i class="fas fa-sign-out-alt"></i> <Traduccio string="tancar-sessio" /></a>
+                                    
 
                                 </div>
                             </div>
@@ -86,8 +86,7 @@ function NouHeader(props) {
             <button className="navbar-toggler custom-toggler text-center" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
-            <div className="collapse navbar-collapse"
-                id="navbarSupportedContent" >
+            <div className="collapse navbar-collapse" id="navbarSupportedContent" >
                 <ul className="navbar-nav ml-auto ">
                 <li className="nav-item">
                             <div className="dropdown">

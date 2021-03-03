@@ -45,7 +45,7 @@ class LoginNou extends React.Component {
                 console.log('no hay valores')
         }
 
-        console.log(this.state.password);
+        
 
     }
 

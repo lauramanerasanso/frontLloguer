@@ -28,7 +28,12 @@
     "preu": "TOTAL PRICE :",
     "reserva": "Book",
     "tancar": "Close",
-    "filtrar": "Filter"
+    "filtrar": "Filter",
+    "proximes-res" : "Next books",
+    "anteriors-res" : "Past books",
+    "desde" : "From ",
+    "fins"  : " to ",
+    "reserves" : "Bookings"
 
 
 

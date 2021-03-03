@@ -28,7 +28,12 @@
     "preu": "PREU TOTAL :",
     "reserva": "Reserva",
     "tancar": "Tancar",
-    "filtrar": "Filtrar"
+    "filtrar": "Filtrar",
+    "proximes-res" : "Pròximes reserves",
+    "anteriors-res" : "Reserves passades",
+    "desde" : "Del ",
+    "fins"  : " fins al ",
+    "reserves" : "Reserves"
 
 
 

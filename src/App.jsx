@@ -132,6 +132,7 @@ class App extends Component {
     localStorage.removeItem("token");
     localStorage.removeItem("email");
     this.setState({ iniciat: false });
+    window.location="/";
 
   };
 
@@ -157,6 +158,7 @@ class App extends Component {
             <Route path="/iniciSessio" render={() => <LoginNou key={"Login-"+this.state.llenguatge} iniciaSessio={this.iniciaSessio} comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} error={this.state.error} canviarLlenguatge={this.canviarLlenguatge} />} />
 
             <Route path="/casa/:id" render={() => <Fitxa key={"fitxa-"+this.state.llenguatge} comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} canviarLlenguatge={this.canviarLlenguatge} loggeat={this.state.iniciat} />} />
+            <Route exact path="/reserves" render={() => <Reserves key={"reserves-"+this.state.llenguatge} tancarSessio={this.tancarSessio} canviarLlenguatge={this.canviarLlenguatge} />} />
 
           </div>
          
