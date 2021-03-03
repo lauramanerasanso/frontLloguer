@@ -393,7 +393,7 @@ class Fitxa extends React.Component {
                         <br />
                         <br />
                         <div className="col preu">
-                          {(this.state.preuTotal === 0 ? "" : <Traduccio string="preu"/> + this.state.preuTotal + " € ")}
+                          {(this.state.preuTotal === 0 ? "" : <><Traduccio string="preu"/> {this.state.preuTotal + " € "}</>)}
                         </div>
 
                       </div>
