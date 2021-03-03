@@ -9,6 +9,7 @@ import LoginNou from './seccions/LoginNou';
 import { BrowserRouter as Router, Route, useHistory , Redirect, withRouter} from "react-router-dom";
 import UsuariContext from './context/UsuariContext';
 import IdiomaContext from './context/IdiomaContext';
+import Reserves from './seccions/Reserves';
 
 
 
