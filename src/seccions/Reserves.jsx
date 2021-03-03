@@ -103,7 +103,7 @@ class Reserves extends React.Component {
 
         axios({
             method: 'post',
-            url: 'https://api.mallorcarustic.me/reserves',
+            url: 'https://api.mallorcarustic.me/client/reserves',
             data: bodyReserves,
             headers: { 'Content-Type': 'multipart/form-data' }
         })
