@@ -41,7 +41,7 @@ class Footer extends Component {
                     </div>
                     <div className="row">
                         <p className="col-sm">
-                            &copy;{new Date().getFullYear()} MallorcaRustic | All right reserved | Terms Of Service | Privacy
+                            &copy;{new Date().getFullYear()} MallorcaRustic
                         </p>
                     </div>
                 </div>
