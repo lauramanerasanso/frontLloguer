@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../Footer.css';
+import Traduccio from "../components/Traduccio";
 
 class Footer extends Component {
     render() {
@@ -10,16 +11,16 @@ class Footer extends Component {
                         {/*Columna1*/}
                         <div className="col">
                             <ul className="XSList">
-                                <li className="list-unstyled"><h4>XARXES SOCIALS</h4></li>
-                                <li className="list-unstyled"><a href="https://www.instagram.com/lauramanerasanso/" className="text-white"><i className="fab fa-instagram"></i> Segueix-nos a Instagram </a></li>
-                                <li className="list-unstyled"><a href="#" className="text-white"><i className="fab fa-facebook"></i> Segueix-nos a Facebook </a></li>
-                                <li className="list-unstyled"><a href="#" className="text-white"><i class="fab fa-twitter"></i> Segueix-nos a Twitter </a></li>
+                                <li className="list-unstyled"><h4><Traduccio string="footer.xarxes" /></h4></li>
+                                <li className="list-unstyled"><a href="https://www.instagram.com/lauramanerasanso/" className="text-white"><i className="fab fa-instagram"></i> <Traduccio string="footer.segueixnos" /> Instagram </a></li>
+                                <li className="list-unstyled"><a href="#" className="text-white"><i className="fab fa-facebook"></i> <Traduccio string="footer.segueixnos" /> Facebook </a></li>
+                                <li className="list-unstyled"><a href="#" className="text-white"><i class="fab fa-twitter"></i> <Traduccio string="footer.segueixnos" /> Twitter </a></li>
                             </ul>
                         </div>
                         {/*Columna2*/}
                         <div className="col">
                             <ul>
-                                <li className="list-unstyled"><h4>DESENVOLUPADORS</h4></li>
+                                <li className="list-unstyled"><h4><Traduccio string="footer.desenv" /></h4></li>
                                 <li className="list-unstyled">Laura Manera Sansó</li>
                                 <li className="list-unstyled">Amanda Mula Riera</li>
                                 <li className="list-unstyled">Joan Baltasar Binimelis Martín</li>
@@ -29,7 +30,7 @@ class Footer extends Component {
                         {/*Columna3*/}
                         <div className="col">
                             <ul>
-                                <li className="list-unstyled"><h4>PROFESSORS</h4></li>
+                                <li className="list-unstyled"><h4><Traduccio string="footer.prof" /></h4></li>
                                 <li className="list-unstyled">Antoni Moragues</li>
                                 <li className="list-unstyled">Antoni Ramirez Duran</li>
                                 <li className="list-unstyled">Antoni Ginard Moyà</li>
