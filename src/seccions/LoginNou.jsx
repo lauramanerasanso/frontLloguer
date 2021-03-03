@@ -4,6 +4,7 @@ import Label from "../components/Label";
 import Button from "../components/RegularButton";
 
 import NouHeader from "../components/NouHeader";
+import Footer from "../components/Footer";
 
 
 
