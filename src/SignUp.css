@@ -1,0 +1,76 @@
+.containerSignUp{
+
+    width: 75%;
+    height: 100%;
+    margin-bottom: 200px;
+    
+    background-color:white;
+    padding:5%;
+    box-shadow:  0 1px 1px rgba(0, 0, 0, 0.1),
+    0 2px 40px rgba(0, 0, 0, 0.1),
+    0 4px 13px rgba(0, 0, 0, 0.1),
+    0 8px 38px rgba(0, 0, 0, 0.1),
+    0 16px 38px rgba(0, 0, 0, 0.1);
+}
+
+.contentSignUp{
+    padding-top: 200px;
+    background-color: whitesmoke;
+
+}
+
+.btn{
+
+    color: white;
+    border-color: #967acd;
+    background-color: #967Acd;
+    font-family: "Noto Sans JP", sans-serif;
+    
+}
+
+.btn:hover{
+   background-color: #967acd;
+   font-family: "Noto Sans JP", sans-serif;
+}
+
+span a {
+    color: #967acd;
+    font-family: "Noto Sans JP", sans-serif;
+}
+
+p a {
+    color: #967acd;
+    font-family: "Noto Sans JP", sans-serif;
+}
+p a:hover {
+    color: cornflowerblue;
+    font-family: "Noto Sans JP", sans-serif;
+}
+
+span a:hover {
+    color: cornflowerblue;
+}
+
+h3 {
+    font-family: "Bungee";
+}
+
+label {
+    font-weight: bolder;
+    font-family: "Noto Sans JP", sans-serif;
+}
+
+.errorStyle {
+    width: 100%;
+    
+    background: rgba(255, 0, 0, 0.05);
+    color: #f9314b;
+    font-size: 16px;
+    border: 1px solid #f9314b;
+    border-radius: 5px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    font-weight: 500;
+    font-family: 'Noto Sans JP';
+   
+}
