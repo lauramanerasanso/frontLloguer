@@ -34,7 +34,15 @@
     "desde" : "Del ",
     "fins"  : " fins al ",
     "reserves" : "Reserves",
-    "no-reserves": "No tens cap reserva"
+    "no-reserves": "No tens cap reserva",
+    "conf": "Configuració d'usuari",
+    "pas-actual" : "Contrasenya actual",
+    "pas-nova" : "Contrasenya nova",
+    "actualitzar-pass" : "La contrasenya s'ha actualitzat correctament.",
+    "error-pass": "La contrasenya ha de tenir mínim 6 caràcters.",
+    "error-canvi" : "La contrasenya actual no és correcte.",
+    "actualitzar":"Actualitzar",
+    "config": "Configuració"
 
 
 

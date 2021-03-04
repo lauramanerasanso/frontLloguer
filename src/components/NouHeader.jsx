@@ -66,6 +66,7 @@ function NouHeader(props) {
                                     <i className="fas fa-user"></i> {email}
                                 </button>
                                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a className="dropdown-item" href={"/configuracio"}><i class="fas fa-cog"></i> <Traduccio string="config" /></a>
                                     <a className="dropdown-item" href={"/reserves"}><i class="fas fa-suitcase"></i> <Traduccio string="reserves" /></a>
                                     <a className="dropdown-item" onClick={props.tancarSessio}><i class="fas fa-sign-out-alt"></i> <Traduccio string="tancar-sessio" /></a>
                                     

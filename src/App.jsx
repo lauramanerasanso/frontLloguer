@@ -10,7 +10,7 @@ import { BrowserRouter as Router, Route, useHistory , Redirect, withRouter} from
 import UsuariContext from './context/UsuariContext';
 import IdiomaContext from './context/IdiomaContext';
 import Reserves from './seccions/Reserves';
-
+import Configuracio from './seccions/Configuracio';
 
 
 class App extends Component {
@@ -160,7 +160,7 @@ class App extends Component {
 
             <Route path="/casa/:id" render={() => <Fitxa key={"fitxa-"+this.state.llenguatge} comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} canviarLlenguatge={this.canviarLlenguatge} loggeat={this.state.iniciat} />} />
             <Route exact path="/reserves" render={() => <Reserves key={"reserves-"+this.state.llenguatge} tancarSessio={this.tancarSessio} canviarLlenguatge={this.canviarLlenguatge} />} />
-
+            <Route exact path="/configuracio" render={() => <Configuracio key={"conf-"+this.state.llenguatge} tancarSessio={this.tancarSessio} canviarLlenguatge={this.canviarLlenguatge} />} />
           </div>
          
           </IdiomaContext.Provider>

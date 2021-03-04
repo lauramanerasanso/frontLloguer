@@ -34,7 +34,15 @@
     "desde" : "From ",
     "fins"  : " to ",
     "reserves" : "Bookings",
-    "no-reserves": "You don't have bookings"
+    "no-reserves": "You don't have bookings",
+    "conf": "User configuration",
+    "pas-actual" : "Current password",
+    "pas-nova" : "New password",
+    "actualitzar-pass" : "The password has update successfully.",
+    "error-pass": "The password must have at least 6 characters.",
+    "error-canvi" : "The current password is incorrect.",
+    "actualitzar":"Update",
+    "config": "Setting"
 
 
 

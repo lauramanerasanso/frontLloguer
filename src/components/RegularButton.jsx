@@ -6,7 +6,7 @@ const RegularButton = ({ handleOnClick, text, param }) => {
             <button
             onClick={ (e) => handleOnClick(e) }
             disabled={ param ? false : true }
-            className="btn btn-primary"
+            className="btn btn-primary boto"
             >
                 { text }
             </button>
