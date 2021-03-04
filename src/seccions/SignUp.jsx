@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Col, Button, Modal } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import Header from '../components/Header';
+import NouHeader from '../components/NouHeader';
 import Footer from '../components/Footer';
 import BotoLink from '../components/BotoLink'
 import classnames from 'classnames';
@@ -27,6 +27,12 @@ class SignUp extends Component {
             errors: {},
             content: "",
         };
+    }
+
+    componentDidMount(){
+      const { comprovarSessio } = this.props;
+
+      comprovarSessio();
     }
 
     handleClose = e => {
@@ -104,8 +110,8 @@ class SignUp extends Component {
         if (correcte == false) {
             this.setState({
                 errors: errors
-            })
-
+            });
+            return;
         }
 
         // const newUser = {
@@ -126,17 +132,24 @@ class SignUp extends Component {
         data.append("password", this.state.password);
         data.append("poblacio", this.state.poblacio);
 
-        axios.post("https://api.mallorcarustic.me/client/crear", data).then((res) => {
+        axios.post("https://api.mallorcarustic/client/crear", data).then((res) => {
             console.log(res);
-            if (res.data == "ERROR" && correcte == false) {
-                this.setState({ show: true });
-                this.setState({ content: "Hi ha camps incorrectes o sense omplir." });
-            } else if (res.data == "ERROR" && correcte != false) {
-                this.setState({ show: true });
-                this.setState({ content: "Aquest compte ja esta actiu." });
+            // if (res.data == "ERROR" && correcte == false) {
+                
+            //     this.setState({ content: "Hi ha camps incorrectes o sense omplir.", show: true });
+            // } else 
+            // if (res.data == "ERROR" && correcte != false) {
+            if (res.data == "ERROR") {
+                
+                this.setState({ content: "Aquest compte ja esta actiu.",show: true });
+                
+            } else if (res.data == "OK") {
+                
+                this.setState({ content: "Compte creat, confirmi clicant al enllaç del correu que li acabem d'enviar.",show: true });
+            
             } else {
-                this.setState({ show: true });
-                this.setState({ content: "Compte creat, confirmi clicant al enllaç del correu que li acabem d'enviar." });
+                
+                this.setState({ content: "Error desconegut.",show: true });
             }
         });
 
@@ -151,7 +164,7 @@ class SignUp extends Component {
 
         return (
             <div className="contentSignUp text-center">
-                <Header />
+                <NouHeader tancarSessio={this.props.tancarSessio}  canviarLlenguatge={this.props.canviarLlenguatge} />
                 <div className="containerSignUp container">
                     <div className="row">
                         <div className="col-10 offset-1 text-center registerText">
@@ -180,7 +193,7 @@ class SignUp extends Component {
                                             className={classnames("form-control", { invalid: errors.name })}
                                             placeholder="Introdueix el teu nom..."
                                         />
-                                        
+
                                         <span className="text-danger">{errors.name}</span>
 
                                     </div>
@@ -200,7 +213,7 @@ class SignUp extends Component {
                                             className={classnames("form-control", { invalid: errors.llinatge1 })}
                                             placeholder="Introdueix el teu primer llinatge..."
                                         />
-                                        
+
                                         <span className="text-danger">{errors.llinatge1}</span>
                                     </div>
                                 </div>
@@ -233,7 +246,7 @@ class SignUp extends Component {
                                             className={classnames("form-control", { invalid: errors.DNI })}
                                             placeholder="Introdueix el teu DNI..."
                                         />
-                                        
+
                                         <span className="text-danger">{errors.DNI}</span>
                                     </div>
 
@@ -267,7 +280,7 @@ class SignUp extends Component {
                                             className={classnames("form-control", { invalid: errors.email })}
                                             placeholder="Enter your email..."
                                         />
-                                        
+
                                         <span className="text-danger">{errors.email}</span>
                                     </div>
 
@@ -287,7 +300,7 @@ class SignUp extends Component {
                                             className={classnames("form-control", { invalid: errors.password })}
                                             placeholder="Introdueix una contrasenya..."
                                         />
-                                        
+
                                         <span className="text-danger">{errors.password}</span>
                                     </div>
 
@@ -304,7 +317,7 @@ class SignUp extends Component {
                                             className={classnames("form-control", { invalid: errors.password2 })}
                                             placeholder="Re-introdueix la teva contrasenya..."
                                         />
-                                      
+
                                         <span className="text-danger">{errors.password2}</span>
                                     </div>
                                 </div>
@@ -323,7 +336,7 @@ class SignUp extends Component {
                                             placeholder="Introdueix la teva població."
 
                                         />
-                                       
+
                                         <span className="text-danger">{errors.poblacio}</span>
                                     </div>
                                 </div>
