@@ -132,14 +132,14 @@ class Reserves extends React.Component {
                         <h4 className="meves"> {this.state.info_proxim.length > 0 ? <Traduccio string="proximes-res"/> : ""}</h4>
                             {this.state.info_proxim.map(function (item, key) {
                                     return (
-                                        <CardReserva key={key} id={item.casa_id} descripcio={item.tradDescripcio} nom={item.traduccioNom} entrada={item.entrada} sortida={item.sortida} preu={item.preu_final} pob={item.nom}/>                                         
+                                        <CardReserva key={key} id={item.casa_id} descripcio={item.tradDescripcio} nom={item.traduccioNom} entrada={item.entrada} sortida={item.sortida} preu={item.preu_final} pob={item.nom} inici={item.data_inici}/>                                         
                                        
                                     )
                                 })}
                             <h4 className="meves mt-5 mb-4"> {this.state.info.length > 0 ? <Traduccio string="anteriors-res" /> :" "} </h4>
                             {this.state.info.map(function (item, key) {
                                     return (
-                                        <CardReserva key={key} id={item.casa_id} descripcio={item.tradDescripcio} nom={item.traduccioNom} entrada={item.entrada} sortida={item.sortida} preu={item.preu_final} pob={item.nom}/>                                         
+                                        <CardReserva key={key} id={item.casa_id} descripcio={item.tradDescripcio} nom={item.traduccioNom} entrada={item.entrada} sortida={item.sortida} preu={item.preu_final} pob={item.nom} inici={item.data_inici}/>                                         
                                        
                                     )
                                 })}
