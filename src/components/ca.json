@@ -55,7 +55,30 @@
     "abans-de" : "ABANS DE",
     "p3-access" : "Alguns sistemes operatius permeten ser configurats perquè llegeixin text en veu alta, i fins i tot ampliar parts determinades de la pantalla. Malgrat que la nostra web proporciona text alternatiu pels elements que no són de text i és adaptable a la mida del dispositiu, recomanem que comprovis que funciona correctament si fas ús d'un programari propi abans de realitzar qualsevol interacció en la Web.",
     "nivell" : "NIVELL D'ACCESSIBILITAT",
-    "p4-access" : "Per tenir un control i assegurar que el major nombre d’usuaris possible pot accedir als llocs web W3C ha tret unes pautes d’accessibilitat, anomenades WCAG 2.0, que proporcionen una qualificació en funció del nivell d’accessibilitat que compleix el lloc web, en el cas de Mallorca Rustic hem optingut un nivell AAA."
+    "p4-access" : "Per tenir un control i assegurar que el major nombre d’usuaris possible pot accedir als llocs web W3C ha tret unes pautes d’accessibilitat, anomenades WCAG 2.0, que proporcionen una qualificació en funció del nivell d’accessibilitat que compleix el lloc web, en el cas de Mallorca Rustic hem optingut un nivell AAA.",
+ "contacte" : "Contacta'ns",
+    "cridada" : "Crida'ns",
+    "horari" : "De Dilluns a Divendres de 9:00h a 19:00h.",
+    "tel" : "Telèfon ",
+    "correu" :  "Envia'ns un correu",
+    "nom" : "Nom",
+    "llinatge1" : "Primer llinatge ",
+    "llinatge2" : "Segon llinatge ",
+    "dni" : "DNI ",
+    "contra" : "Contrasenya",
+    "repeteix": "Confirma contrasenya",
+    "poblacio": "Població",
+    "compte" :"Ja estàs registrat?",
+    "error-registre" : "Ja tenim un compte per aquest e-mail.",
+    "ok" : "Compte creat!",
+    "error-servidor" : "Error del servidor.",
+    "camps": "Aquests camps són obligatoris.",
+    "error-nom": " Mínim 3 caràcters.",
+    "error-pas": " Mínim 6 caràcters.",
+    "error-dni":" DNI invàlid",
+    "error-email" : " Correu incorrecte",
+    "error-pass2": " Les contrasenyes no coincideixen.",
+    "error-pob": " Aquest camp no pot ser buit."
 
 
 

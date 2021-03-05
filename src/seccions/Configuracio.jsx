@@ -48,7 +48,7 @@ class Configuracio extends React.Component {
 
         axios({
             method: 'post',
-            url: 'https://api.mallorcarustic.me/usuari/comprovar-login',
+            url: 'http://api.home/usuari/comprovar-login',
             data: bodyFormData,
             headers: { 'Content-Type': 'multipart/form-data' }
         })
@@ -117,7 +117,7 @@ class Configuracio extends React.Component {
 
             axios({
                 method: 'post',
-                url: 'https://api.mallorcarustic.me/client/canviar-password',
+                url: 'http://api.home/client/canviar-password',
                 data: bodyCanviar,
                 headers: { 'Content-Type': 'multipart/form-data' }
             })
@@ -202,7 +202,7 @@ class Configuracio extends React.Component {
                             <div className="container">
 
                                 <div className="row">
-                                    <div className="col-md-4 offset-2">
+                                    <div className="col-md-4 col-sm-6 offset-md-2">
                                         <div className="form-group">
 
                                             <Label text={<Traduccio string="pas-actual" />} per="password-actual" classe="label" />
@@ -219,7 +219,7 @@ class Configuracio extends React.Component {
 
                                     </div>
 
-                                    <div className="col-md-4">
+                                    <div className="col-md-4 col-sm-6">
                                         <div className="form-group">
 
                                             <Label text={<Traduccio string="pas-nova" />} per="password-nova" classe="label" />
@@ -254,7 +254,7 @@ class Configuracio extends React.Component {
                                             <p className="errorStyle"><i className="fas fa-exclamation-triangle"></i><Traduccio string="error-canvi" /></p>
                                         </div>
                                     }
-                                    <div className="offset-8 col-2">
+                                    <div className="offset-lg-8 offset-md-6 col-lg-2 col-md-4">
                                         <button className="btn btn-primary col boto" onClick={this.canviarPass}> <Traduccio string="actualitzar" /></button>
                                     </div>
                                 </div>

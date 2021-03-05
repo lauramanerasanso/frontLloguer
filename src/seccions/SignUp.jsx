@@ -7,7 +7,7 @@ import BotoLink from '../components/BotoLink'
 import classnames from 'classnames';
 import '../SignUp.css';
 import axios from 'axios';
-
+import Traduccio from "../components/Traduccio";
 
 
 class SignUp extends Component {
@@ -57,51 +57,51 @@ class SignUp extends Component {
         var errors = {};
 
         if (this.state.name.length <= 2) {
-            errors.name = <div><br />
-                <p className="errorStyle"><i className="fas fa-exclamation-triangle"></i>Introdueix un nom de minim 3 lletres.</p>
+            errors.name = <div>
+                <p className="errorStyle"><i className="fas fa-exclamation-triangle"></i><Traduccio string="error-nom"/></p>
             </div>
             correcte = false;
         }
 
         if (this.state.llinatge1.length <= 2) {
-            errors.llinatge1 = <div><br />
-                <p className="errorStyle"><i className="fas fa-exclamation-triangle"></i>Introdueix un llinatge de minim 3 lletres.</p>
+            errors.llinatge1 = <div>
+                <p className="errorStyle"><i className="fas fa-exclamation-triangle"></i><Traduccio string="error-nom"/></p>
             </div>
             correcte = false;
         }
         if (this.state.DNI.length <= 2) {
-            errors.DNI = <div><br />
-                <p className="errorStyle"><i className="fas fa-exclamation-triangle"></i>Introdueix un DNI correcte.</p>
+            errors.DNI = <div>
+                <p className="errorStyle"><i className="fas fa-exclamation-triangle"></i><Traduccio string="error-dni"/></p>
             </div>
             correcte = false;
         }
 
         if (!this.state.email.match(/^\S+@\S+\.\S+$/)) {
-            errors.email = <div><br />
-                <p className="errorStyle"><i className="fas fa-exclamation-triangle"></i>El correu es incorrecte.</p>
+            errors.email = <div>
+                <p className="errorStyle"><i className="fas fa-exclamation-triangle"></i><Traduccio string="error-email"/></p>
             </div>
             correcte = false;
         }
 
         if (this.state.password.length < 6) {
-            errors.password = <div><br />
-                <p className="errorStyle"><i className="fas fa-exclamation-triangle"></i>La contrasenya ha de tenir minim 6 caracters.</p>
+            errors.password = <div>
+                <p className="errorStyle"><i className="fas fa-exclamation-triangle"></i><Traduccio string="error-pas"/></p>
             </div>
             correcte = false;
 
         }
 
         if (this.state.password !== this.state.password2) {
-            errors.password2 = <div><br />
-                <p className="errorStyle"><i className="fas fa-exclamation-triangle"></i>Aquesta contrasenya no es igual a l'anterior.</p>
+            errors.password2 = <div>
+                <p className="errorStyle"><i className="fas fa-exclamation-triangle"></i><Traduccio string="error-pass2"/></p>
             </div>
 
             correcte = false;
         }
 
         if (this.state.poblacio.length <= 2) {
-            errors.poblacio = <div><br />
-                <p className="errorStyle"><i className="fas fa-exclamation-triangle"></i>Introdueix un poble.</p>
+            errors.poblacio = <div>
+                <p className="errorStyle"><i className="fas fa-exclamation-triangle"></i><Traduccio string="error-pob"/></p>
             </div>
             correcte = false;
 
@@ -132,7 +132,7 @@ class SignUp extends Component {
         data.append("password", this.state.password);
         data.append("poblacio", this.state.poblacio);
 
-        axios.post("https://api.mallorcarustic/client/crear", data).then((res) => {
+        axios.post("http://api.home/client/crear", data).then((res) => {
             console.log(res);
             // if (res.data == "ERROR" && correcte == false) {
                 
@@ -141,15 +141,15 @@ class SignUp extends Component {
             // if (res.data == "ERROR" && correcte != false) {
             if (res.data == "ERROR") {
                 
-                this.setState({ content: "Aquest compte ja esta actiu.",show: true });
+                this.setState({ content:<Traduccio string="error-registre"/> ,show: true });
                 
             } else if (res.data == "OK") {
                 
-                this.setState({ content: "Compte creat, confirmi clicant al enllaç del correu que li acabem d'enviar.",show: true });
+                this.setState({ content: <Traduccio string="ok"/>,show: true });
             
             } else {
                 
-                this.setState({ content: "Error desconegut.",show: true });
+                this.setState({ content: <Traduccio string="error-servidor"/>,show: true });
             }
         });
 
@@ -163,12 +163,12 @@ class SignUp extends Component {
         const { errors } = this.state;
 
         return (
-            <div className="contentSignUp text-center">
+            <div className="contentSignUp">
                 <NouHeader tancarSessio={this.props.tancarSessio}  canviarLlenguatge={this.props.canviarLlenguatge} />
                 <div className="containerSignUp container">
                     <div className="row">
                         <div className="col-10 offset-1 text-center registerText">
-                            <h3>Registra't</h3>
+                            <h3><Traduccio string="registrar"/></h3>
 
                         </div>
                     </div>
@@ -176,13 +176,13 @@ class SignUp extends Component {
                     <br />
 
                     <div className="row">
-                        <div className="col-10 offset-1">
+                        <div className="col-12">
 
                             <form noValidate onSubmit={this.onSubmit}>
                                 <div className="row">
                                     {/* Name */}
-                                    <div className="col-12 col-md-5 offset-md-1">
-                                        <label htmlFor="name">Nom:</label>
+                                    <div className="col-12 col-md-5 offset-md-1 from-group">
+                                        <label htmlFor="name"><Traduccio string="nom"/><strong> *</strong> :</label>
 
                                         <input
                                             type="text"
@@ -190,8 +190,8 @@ class SignUp extends Component {
                                             value={this.state.name}
 
                                             id="name"
-                                            className={classnames("form-control", { invalid: errors.name })}
-                                            placeholder="Introdueix el teu nom..."
+                                            className={classnames("form-control in", { invalid: errors.name })}
+                                         
                                         />
 
                                         <span className="text-danger">{errors.name}</span>
@@ -202,7 +202,7 @@ class SignUp extends Component {
 
                                     {/*Llinatge1*/}
                                     <div className="col-12 col-md-5">
-                                        <label htmlFor="llinatge1">Primer llinatge:</label>
+                                        <label htmlFor="llinatge1"><Traduccio string="llinatge1"/> <strong> *</strong> :</label>
 
                                         <input
                                             type="text"
@@ -210,32 +210,32 @@ class SignUp extends Component {
                                             value={this.state.llinatge1}
 
                                             id="llinatge1"
-                                            className={classnames("form-control", { invalid: errors.llinatge1 })}
-                                            placeholder="Introdueix el teu primer llinatge..."
+                                            className={classnames("form-control in", { invalid: errors.llinatge1 })}
+                                            
                                         />
 
                                         <span className="text-danger">{errors.llinatge1}</span>
                                     </div>
                                 </div>
-                                <br />
+                              
                                 <div className="row">
                                     {/*Llinatge2*/}
                                     <div className="col-12 col-md-5 offset-md-1">
-                                        <label htmlFor="llinatge1">Segon llinatge:</label>
+                                        <label htmlFor="llinatge1"><Traduccio string="llinatge2"/> :</label>
                                         <input
                                             type="text"
                                             onChange={this.onChange}
                                             value={this.state.llinatge2}
 
                                             id="llinatge2"
-                                            className={classnames("form-control", { invalid: errors.name })}
-                                            placeholder="(No obligatori)"
+                                            className={classnames("form-control in", { invalid: errors.name })}
+                                            
                                         />
 
                                     </div>
                                     {/*DNI*/}
                                     <div className="col-12 col-md-5">
-                                        <label htmlFor="DNI">DNI:</label>
+                                        <label htmlFor="DNI"><Traduccio string="dni"/><strong> *</strong> :</label>
 
                                         <input
                                             type="text"
@@ -243,19 +243,19 @@ class SignUp extends Component {
                                             value={this.state.DNI}
 
                                             id="DNI"
-                                            className={classnames("form-control", { invalid: errors.DNI })}
-                                            placeholder="Introdueix el teu DNI..."
+                                            className={classnames("form-control in", { invalid: errors.DNI })}
+                                           
                                         />
 
                                         <span className="text-danger">{errors.DNI}</span>
                                     </div>
 
                                 </div>
-                                <br />
+                               
                                 <div className="row">
                                     {/* Telefon */}
                                     <div className="col-12 col-md-5 offset-md-1">
-                                        <label htmlFor="telefon">Telefon:</label>
+                                        <label htmlFor="telefon"><Traduccio string="tel"/> :</label>
 
                                         <input
                                             type="text"
@@ -263,13 +263,13 @@ class SignUp extends Component {
                                             value={this.state.telefon}
                                             error={errors.name}
                                             id="telefon"
-                                            className={classnames("form-control", { invalid: errors.name })}
-                                            placeholder="(No obligatori)..."
+                                            className={classnames("form-control in", { invalid: errors.name })}
+                                            
                                         />
                                     </div>
                                     {/* Email */}
                                     <div className="col-12 col-md-5">
-                                        <label htmlFor="email">Email:</label>
+                                        <label htmlFor="email">E-mail<strong>*</strong> :</label>
 
                                         <input
                                             type="email"
@@ -277,19 +277,19 @@ class SignUp extends Component {
                                             value={this.state.email}
                                             error={errors.email}
                                             id="email"
-                                            className={classnames("form-control", { invalid: errors.email })}
-                                            placeholder="Enter your email..."
+                                            className={classnames("form-control in", { invalid: errors.email })}
+                                          
                                         />
 
                                         <span className="text-danger">{errors.email}</span>
                                     </div>
 
                                 </div>
-                                <br />
+                              
                                 <div className="row">
                                     {/* Password */}
                                     <div className="col-12 col-md-5 offset-md-1">
-                                        <label htmlFor="password">Contrasenya:</label>
+                                        <label htmlFor="password"><Traduccio string="contra"/><strong> *</strong> :</label>
 
                                         <input
                                             type="password"
@@ -297,8 +297,8 @@ class SignUp extends Component {
                                             value={this.state.password}
                                             error={errors.password}
                                             id="password"
-                                            className={classnames("form-control", { invalid: errors.password })}
-                                            placeholder="Introdueix una contrasenya..."
+                                            className={classnames("form-control in", { invalid: errors.password })}
+                                            
                                         />
 
                                         <span className="text-danger">{errors.password}</span>
@@ -306,7 +306,7 @@ class SignUp extends Component {
 
                                     {/* Validate password */}
                                     <div className="col-12 col-md-5">
-                                        <label htmlFor="password2">Confirma contrasenya:</label>
+                                        <label htmlFor="password2"><Traduccio string="repeteix"/><strong> *</strong> :</label>
 
                                         <input
                                             type="password"
@@ -314,46 +314,49 @@ class SignUp extends Component {
                                             value={this.state.password2}
                                             error={errors.password2}
                                             id="password2"
-                                            className={classnames("form-control", { invalid: errors.password2 })}
-                                            placeholder="Re-introdueix la teva contrasenya..."
+                                            className={classnames("form-control in", { invalid: errors.password2 })}
+                                          
                                         />
-
                                         <span className="text-danger">{errors.password2}</span>
                                     </div>
                                 </div>
-                                <br />
+                              
                                 <div className="row">
                                     {/*Poblacio*/}
                                     <div className="col-12 col-md-5 offset-md-1">
-                                        <label htmlFor="poblacio">Població:</label>
+                                        <label htmlFor="poblacio"><Traduccio string="poblacio"/><strong> *</strong> :</label>
 
                                         <input
                                             type="text"
                                             onChange={this.onChange}
                                             value={this.state.poblacio}
                                             id="poblacio"
-                                            className={classnames("form-control", { invalid: errors.poblacio })}
-                                            placeholder="Introdueix la teva població."
+                                            className={classnames("form-control in", { invalid: errors.poblacio })}
+                                           
 
                                         />
 
                                         <span className="text-danger">{errors.poblacio}</span>
                                     </div>
                                 </div>
+                                <div className="row col">
+                                    <div className="offset-1">
 
-                                <br />
+                                    <h6 className="horari"><strong>* <Traduccio string="camps"/></strong></h6>
+                                    </div>
+                               </div> 
+
+                          
                                 <div className="row">
-                                    {/* Submit button */}
                                     <div className="col-12 text-center">
-                                        <button className="btn signupbtn" type="submit">
-                                            Registra't
+                                        <button className="btn btn-primary boto" type="submit">
+                                        <Traduccio string="registrar"/>
 			 	  				</button>
                                     </div>
                                 </div>
-                                <br />
-                                <div className="col-10 offset-1 text-center registerText">
-
-                                    <p>Ja tens un compte? <a href="/login" className="link">Inicia sessió.</a></p>
+                          
+                                <div className="col-10 offset-1 text-center">
+                                    <h6 className="horari"><Traduccio string="compte"/><a href="/iniciSessio"><Traduccio string="inici-sessio"/></a></h6>
                                 </div>
                             </form>
                         </div>
@@ -367,8 +370,8 @@ class SignUp extends Component {
                     <Modal.Body>{this.state.content}</Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={this.handleClose.bind(this)}>
-                            Tanca
-          </Button>
+                        <Traduccio string="tancar"/>
+                        </Button>
 
                     </Modal.Footer>
                 </Modal>

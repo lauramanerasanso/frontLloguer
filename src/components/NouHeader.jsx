@@ -107,7 +107,7 @@ function NouHeader(props) {
                         <BotoLink url="/iniciSessio" estil="btn btn-outline-primary nav-link mr-3" text={<Traduccio string="inici-sessio" />} />
                     </li>
                     <li className="nav-item" >
-                        <BotoLink url="http://www.google.es" estil="btn btn-primary nav-link mr-3" text={<Traduccio string="registrar" />} />
+                        <BotoLink url="/registre" estil="btn btn-primary nav-link mr-3" text={<Traduccio string="registrar" />} />
                     </li>
                 </ul>
             </div>

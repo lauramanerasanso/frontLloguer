@@ -4,15 +4,13 @@ import Label from "../components/Label";
 import Button from "../components/RegularButton";
 
 import NouHeader from "../components/NouHeader";
-import Footer from "../components/Footer";
-
+import Footer from '../components/Footer';
 
 
 import "../Login.css";
 import 'bootstrap/dist/css/bootstrap.css';
 import Traduccio from "../components/Traduccio";
 import $ from 'jquery';
-import { Helmet } from 'react-helmet';
 
 class LoginNou extends React.Component {
 
@@ -27,7 +25,7 @@ class LoginNou extends React.Component {
         this.state = {
             usuari: '',
             password: '',
-
+        
 
         };
 
@@ -83,7 +81,7 @@ class LoginNou extends React.Component {
 
 
 
-
+      
     }
 
 
@@ -91,9 +89,6 @@ class LoginNou extends React.Component {
 
         return (
             <div>
-                <Helmet>
-                    <title>INICI SESSIÓ · Mallorca Rustic</title>
-                </Helmet>
                 <NouHeader tancarSessio={this.props.tancarSessio} canviarLlenguatge={this.props.canviarLlenguatge} />
 
                 <div className="container login text-center">
@@ -102,7 +97,7 @@ class LoginNou extends React.Component {
 
                             <h3 className='titol'><Traduccio string="inici-sessio" /></h3>
                             <div className="row">
-                                <div className="col-lg-8 text-center mx-auto">
+                                <div className="col-lg-8 mx-auto">
 
 
                                     <div className="form-group">
@@ -122,7 +117,7 @@ class LoginNou extends React.Component {
 
                                         <Label text={<Traduccio string="contrasenya" />} per="password" classe="label" />
 
-                                        <div class="input-group text-center">
+                                        <div class="input-group">
 
                                             <input type="password" name="password" className="form-control" id="password" onChange={(e) => this.handleChange(e.target.name, e.target.value)} required />
                                             <div className="input-group-prepend">
@@ -137,12 +132,11 @@ class LoginNou extends React.Component {
                                             <p className="errorStyle"><i className="fas fa-exclamation-triangle"></i><Traduccio string="error" /></p>
                                         </div>
                                     }
-                                    <Button
-                                        text={<Traduccio string="inici-sessio" />}
-                                        handleOnClick={this.handleOnClick}
-                                        param={true}
-                                        className="btn btn-primary"
-                                    />
+                                    
+                                    <button className="btn btn-primary boto" onClick={this.handleOnClick}>
+                                        <Traduccio string="inici-sessio" />  
+                                        </button>
+                                       
 
                                 </div>
                             </div>
@@ -152,11 +146,11 @@ class LoginNou extends React.Component {
                         <div className="col-md-6">
 
                             <div className="row">
-                                <div className="col-md-10 text-center mx-auto">
+                                <div className="col-md-10 text-center mx-auto r">
                                     <h3 className='titol'><Traduccio string="registrar" /></h3>
                                     <h6 className="desc"><Traduccio string="text1" /> <strong>mallorcarustic.me</strong><Traduccio string="text2" /></h6>
 
-                                    <a href="#" className="btn btn-outline-primary"><Traduccio string="registrar" /></a>
+                                    <a href="/registre" className="btn btn-outline-primary boto"><Traduccio string="registrar" /></a>
 
                                 </div>
                             </div>

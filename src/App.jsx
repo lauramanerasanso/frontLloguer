@@ -14,6 +14,7 @@ import Configuracio from './seccions/Configuracio';
 import SignUp from './seccions/SignUp';
 import ComprovantReserva from './seccions/ComprovantReserva';
 import Accessibilitat from './seccions/Accessibilitat';
+import Contacte from './seccions/Contacte';
 
 
 class App extends Component {
@@ -174,6 +175,8 @@ class App extends Component {
             <Route path="/reserva/:idCasa/:di" render={() => <ComprovantReserva key={"comprovant-"+this.state.llenguatge} comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} canviarLlenguatge={this.canviarLlenguatge}  />} />
             
             <Route exact path="/accessibilitat" render={() => <Accessibilitat key={"accessibilitat-"+this.state.llenguatge} comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} canviarLlenguatge={this.canviarLlenguatge} />} />
+            <Route exact path="/contacte" render={() => <Contacte key={"cont-"+this.state.llenguatge} comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} canviarLlenguatge={this.canviarLlenguatge} />} />
+
             
           </div>
 

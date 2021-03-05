@@ -1,0 +1,40 @@
+.contacte{
+    margin-top: 100px;
+    height: 370px;
+}
+
+
+.cont{
+    padding-top: 150px;
+}
+
+.inform{
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.tema{
+    font-family: 'bungee';
+    margin-top: 5%;
+    
+}
+
+
+.horari{
+    font-family: "Noto Sans JP";
+}
+
+@media only screen and (max-width: 992px) {
+ 
+    .inform{
+        text-align: center !important;
+        align-items: center !important;
+    }
+    .email{
+        margin-top: 30px;
+    }
+    
+}
+
+
+

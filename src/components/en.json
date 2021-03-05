@@ -55,8 +55,30 @@
     "abans-de" : "BEFORE",
     "p3-access" : "Some operating systems allow you to be configured to read text out, and even extend certain parts of the screen. Even though our web site provide alternative text for the no text elements and it’s responsive, we recommend that you check that it works properly if you use your own software before performing any interaction on the Web.",
     "nivell" : "ACCESSIBILITY LEVEL",
-    "p4-access" : "In order to have a regulation and guarantee that the largest number of users can access the web sites W3C have bring some accessibility tips, called WCAG 2.0, these tips provide a mark acording to the accessibility level of your web site, in the case of Mallorca Rustic we have get a level AAA."
-
+    "p4-access" : "In order to have a regulation and guarantee that the largest number of users can access the web sites W3C have bring some accessibility tips, called WCAG 2.0, these tips provide a mark acording to the accessibility level of your web site, in the case of Mallorca Rustic we have get a level AAA.",
+ "contacte" : "Contact us",
+    "cridada" : "Call us",
+    "horari" : "From Monday to Friday since 9 a.m. to 7 p.m.",
+    "tel" : "Phone",
+    "correu" :  "Send us an E-mail",
+    "nom" : "Name",
+    "llinatge1" : "First surname",
+    "llinatge2" : "Second surname",
+    "dni" : "DNI",
+    "contra" : "Password",
+    "repeteix": "Confirm password",
+    "poblacio": "Town",
+    "compte" :"Are you already signed up? ",
+    "error-registre" : "We already have an account for these e-mail",
+    "ok" : "Account created!",
+    "error-servidor" : "Server Error.",
+    "camps": "These fields are necessary.",
+    "error-nom": " Minimum 3 caracters.",
+    "error-dni":" Invalid DNI",
+    "error-email" : " Incorrect email",
+    "error-pas": " Minimum 6 caracters.",
+    "error-pass2": " The password don't match",
+    "error-pob": " This field can't be empty."
 
 
 
