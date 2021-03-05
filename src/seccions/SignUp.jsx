@@ -132,7 +132,7 @@ class SignUp extends Component {
         data.append("password", this.state.password);
         data.append("poblacio", this.state.poblacio);
 
-        axios.post("http://api.home/client/crear", data).then((res) => {
+        axios.post("https://api.mallorcarustic.me/client/crear", data).then((res) => {
             console.log(res);
             // if (res.data == "ERROR" && correcte == false) {
                 

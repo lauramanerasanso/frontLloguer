@@ -48,7 +48,7 @@ class Configuracio extends React.Component {
 
         axios({
             method: 'post',
-            url: 'http://api.home/usuari/comprovar-login',
+            url: 'https://api.mallorcarustic.me/usuari/comprovar-login',
             data: bodyFormData,
             headers: { 'Content-Type': 'multipart/form-data' }
         })
@@ -117,7 +117,7 @@ class Configuracio extends React.Component {
 
             axios({
                 method: 'post',
-                url: 'http://api.home/client/canviar-password',
+                url: 'https://api.mallorcarustic.me/client/canviar-password',
                 data: bodyCanviar,
                 headers: { 'Content-Type': 'multipart/form-data' }
             })

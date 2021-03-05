@@ -32,7 +32,7 @@ class Contacte extends React.Component {
 
         axios({
             method: 'post',
-            url: 'http://api.home/propietari',
+            url: 'https://api.mallorcarustic.me/propietari',
             headers: { 'Content-Type': 'multipart/form-data' }
         })
             .then(response => {
