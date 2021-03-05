@@ -151,16 +151,19 @@ class Reserves extends React.Component {
 
             } else {
                 return (
-                  <div>
-                    <NouHeader tancarSessio={this.props.tancarSessio} canviarLlenguatge={this.props.canviarLlenguatge}/>
-                    <div className="container fitxa nocasa">
-                    
-                      <h4><Traduccio string="nocasa" /></h4>
+                    <div>
+                        <NouHeader />
                     </div>
-                  </div>
                 );
-              }
             }
+
+        } else {
+            return (
+                <div>
+                    <NouHeader />
+                </div>
+            );
+        }
     }
 
 }
