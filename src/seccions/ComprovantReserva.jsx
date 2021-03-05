@@ -12,7 +12,6 @@ const ref = React.createRef();
 function ComprovantReserva(props) {
 
   const { comprovarSessio } = props;
-  comprovarSessio();
 
   const id = props.match.params.idCasa;
   const dataInici = props.match.params.di;
