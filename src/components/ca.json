@@ -42,7 +42,22 @@
     "error-pass": "La contrasenya ha de tenir mínim 6 caràcters.",
     "error-canvi" : "La contrasenya actual no és correcte.",
     "actualitzar":"Actualitzar",
-    "config": "Configuració"
+    "config": "Configuració",
+    "nocasa" : "Ups... Ens sap greu, aquesta casa no existeix",
+    "descarrega" : "Descarrega pdf",
+    "dades-reserva" : "DADES DE LA RESERVA",
+    "desde-hores" : "A partir de les 14h",
+    "fins-hores" : "Abans de les 12h",
+    "veure-reserves" : "Veure reserva",
+    "accessibilitat" : "ACCESSIBILITAT",
+    "p1-access" : "Des de Mallorca Rustic estim fent els nostres majors esforços per a facilitar l'accés a les persones que sofreixen algun tipus de discapacitat, treballant per una web accessible des de qualsevol dispositiu o sistema operatiu utilitzat.",
+    "p2-access" : "Tot i que avui en dia els pròpis navegadors i sistemes operatius ja duen integrades funcionalitats per millorar l'accés i fer la navegació pels diversos llocs webs més fàcil per a tothom, és feina de Mallorca Rustic integrar aquestes funcionalitats a la nostra web, i en això esteim treballant.",
+    "abans-de" : "ABANS DE",
+    "p3-access" : "Alguns sistemes operatius permeten ser configurats perquè llegeixin text en veu alta, i fins i tot ampliar parts determinades de la pantalla. Malgrat que la nostra web proporciona text alternatiu pels elements que no són de text i és adaptable a la mida del dispositiu, recomanem que comprovis que funciona correctament si fas ús d'un programari propi abans de realitzar qualsevol interacció en la Web.",
+    "nivell" : "NIVELL D'ACCESSIBILITAT",
+    "p4-access" : "Per tenir un control i assegurar que el major nombre d’usuaris possible pot accedir als llocs web W3C ha tret unes pautes d’accessibilitat, anomenades WCAG 2.0, que proporcionen una qualificació en funció del nivell d’accessibilitat que compleix el lloc web, en el cas de Mallorca Rustic hem optingut un nivell AAA."
+
+
 
 
 

@@ -91,3 +91,26 @@ i{
 .react-datepicker-wrapper{
     width: 100%;
 }
+
+.botoNM{
+    font-family: 'Noto Sans Jp';
+}
+
+.nocasa h4{
+    color:black !important;
+}
+
+h2{
+    font-family: "Bungee",cursive;
+}
+
+.tit_access{
+
+    font-family: "Bungee",cursive;
+    text-align: center;
+    padding-top: 200px;
+}
+
+.text_access{
+    font-family: 'Noto Sans Jp';
+}

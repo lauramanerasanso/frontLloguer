@@ -200,11 +200,23 @@ class Principal extends Component {
                             <div className="row">
                                 <input type="date" onChange={this.handleChangeInput} id="dataInici" name="dataInici" placeholder="Data Entrada" className="form-control col-sm-4"  value={this.state.dataInici} required/>
                                 <input type="date" min={this.state.dataInici} onChange={this.handleChangeInput} id="dataFi" name="dataFi" placeholder="Data Sortida" className="form-control col-sm-4" value={this.state.dataFi} required/>
-                                <div className="col-sm-2">
-                                    <Link to="/cases/totes/">
-                                        <button className="btn btn-primary col" onClick={this.datesCerca}> <Traduccio string="cerca" /> </button>
-                                    </Link>
-                                </div>
+                                {(this.state.dataInici == '' && this.state.dataFi == '') ? 
+                                    <div className="col-sm-2">
+                                        <Link to={"/cases/totes/"}>
+                                            <Button variant="primary col botoNM" onClick={this.showAllCards} onClick={this.datesCerca}>
+                                            <i class="fas fa-search"></i> <Traduccio string="cerca" />
+                                            </Button>
+                                        </Link>
+                                    </div>
+                                :  
+                                    <div className="col-sm-2">
+                                        <Link to={"/cases/"+this.state.dataInici+"/"+this.state.dataFi}>
+                                          <Button variant="primary col botoNM"onClick={this.datesCerca}>
+                                              <i class="fas fa-search"></i> <Traduccio string="cerca" />
+                                          </Button>
+                                        </Link>
+                                    </div>
+                                  }
                                 <div className="col-sm-2">
                                 <Button variant="outline-primary" onClick={this.handleShow}>
                                 <Traduccio string="filtres" />

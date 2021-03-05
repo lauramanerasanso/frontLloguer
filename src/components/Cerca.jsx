@@ -49,15 +49,17 @@ class Cerca extends Component{
                         {(this.state.dataInici == '' && this.state.dataFi == '') ? 
                             <div className="col-lg-4">
                                 <Link to={"/cases/totes/"}>
-                                    <Button variant="primary col" onClick={this.showAllCards} onClick={this.props.datesCerca}>
+                                    <Button variant="primary col botoNM" onClick={this.showAllCards} onClick={this.props.datesCerca}>
                                     <i class="fas fa-search"></i> <Traduccio string="cerca" />
                                     </Button>
                                 </Link>
                             </div>
                          :  
-                            <div className="col-lg-2">
+                            <div className="col-lg-4">
                                 <Link to={"/cases/"+this.state.dataInici+"/"+this.state.dataFi}>
-                                    <button className="btn btn-primary col" onClick={this.props.datesCerca}> <Traduccio string="cerca" /> </button>
+                                  <Button variant="primary col botoNM"onClick={this.props.datesCerca}>
+                                      <i class="fas fa-search"></i> <Traduccio string="cerca" />
+                                  </Button>
                                 </Link>
                             </div>
                           }

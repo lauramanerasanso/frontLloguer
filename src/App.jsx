@@ -12,6 +12,8 @@ import IdiomaContext from './context/IdiomaContext';
 import Reserves from './seccions/Reserves';
 import Configuracio from './seccions/Configuracio';
 import SignUp from './seccions/SignUp';
+import ComprovantReserva from './seccions/ComprovantReserva';
+import Accessibilitat from './seccions/Accessibilitat';
 
 
 class App extends Component {
@@ -154,14 +156,25 @@ class App extends Component {
 
           <div className="App">
             <Route exact path="/" render={() => <Principal key={"principal-"+this.state.llenguatge} comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} canviarLlenguatge={this.canviarLlenguatge} />} />
+            
             <Route exact path="/cases/:di/:df" render={() => <Principal key={"principal-"+this.state.llenguatge} comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} canviarLlenguatge={this.canviarLlenguatge} />} />
+            
             <Route exact path="/cases/:esCercat/" render={() => <Principal key={"principal-"+this.state.llenguatge} comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} canviarLlenguatge={this.canviarLlenguatge} />} />
 
             <Route path="/iniciSessio" render={() => <LoginNou key={"Login-"+this.state.llenguatge} iniciaSessio={this.iniciaSessio} comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} error={this.state.error} canviarLlenguatge={this.canviarLlenguatge} />} />
+            
             <Route path="/registre" render={() => <SignUp key={"registre-"+this.state.llenguatge} comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} canviarLlenguatge={this.canviarLlenguatge} />}/>
+            
             <Route path="/casa/:id" render={() => <Fitxa key={"fitxa-"+this.state.llenguatge} comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} canviarLlenguatge={this.canviarLlenguatge} loggeat={this.state.iniciat} />} />
+            
             <Route exact path="/reserves" render={() => <Reserves key={"reserves-"+this.state.llenguatge} comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} canviarLlenguatge={this.canviarLlenguatge} />} />
+            
             <Route exact path="/configuracio" render={() => <Configuracio key={"conf-"+this.state.llenguatge} tancarSessio={this.tancarSessio} canviarLlenguatge={this.canviarLlenguatge} />} />
+            
+            <Route path="/reserva/:idCasa/:di" render={() => <ComprovantReserva key={"comprovant-"+this.state.llenguatge} comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} canviarLlenguatge={this.canviarLlenguatge}  />} />
+            
+            <Route exact path="/accessibilitat" render={() => <Accessibilitat key={"accessibilitat-"+this.state.llenguatge} comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} canviarLlenguatge={this.canviarLlenguatge} />} />
+            
           </div>
 
           </IdiomaContext.Provider>
