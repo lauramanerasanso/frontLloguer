@@ -8,41 +8,26 @@ class Footer extends Component {
             <div className="main-footer">
                 <div className="container">
                     <div className="row">
-                        {/*Columna1*/}
-                        <div className="col">
-                            <ul className="XSList">
-                                <li className="list-unstyled"><h4><Traduccio string="footer.xarxes" /></h4></li>
-                                <li className="list-unstyled"><a href="https://www.instagram.com/lauramanerasanso/" className="text-white"><i className="fab fa-instagram"></i> <Traduccio string="footer.segueixnos" /> Instagram </a></li>
-                                <li className="list-unstyled"><a href="#" className="text-white"><i className="fab fa-facebook"></i> <Traduccio string="footer.segueixnos" /> Facebook </a></li>
-                                <li className="list-unstyled"><a href="#" className="text-white"><i class="fab fa-twitter"></i> <Traduccio string="footer.segueixnos" /> Twitter </a></li>
-                            </ul>
+                        <div className="col-md-6">
+                        
+                           <h4><Traduccio string="footer.segueixnos" />   <a href="https://www.instagram.com/lauramanerasanso/" className="text-white ins"> <i className="fab fa-instagram"></i></a> <a href="#" className="text-white"><i class="fab fa-facebook-f"></i></a> <a href="#" className="text-white"><i class="fab fa-twitter"></i>  </a></h4>
+                                
+                               
+                                
+                           
                         </div>
-                        {/*Columna2*/}
-                        <div className="col">
-                            <ul>
-                                <li className="list-unstyled"><h4><Traduccio string="footer.desenv" /></h4></li>
-                                <li className="list-unstyled">Laura Manera Sansó</li>
-                                <li className="list-unstyled">Amanda Mula Riera</li>
-                                <li className="list-unstyled">Joan Baltasar Binimelis Martín</li>
-                            </ul>
-
-                        </div>
-                        {/*Columna3*/}
-                        <div className="col">
-                            <ul>
-                                <li className="list-unstyled"><h4><Traduccio string="footer.prof" /></h4></li>
-                                <li className="list-unstyled">Antoni Moragues</li>
-                                <li className="list-unstyled">Antoni Ramirez Duran</li>
-                                <li className="list-unstyled">Antoni Ginard Moyà</li>
-                                <li className="list-unstyled">Apolonia Garcias Pallarés</li>
-                                <li className="list-unstyled">Antoni Mas Gutierrez</li>
-                            </ul>
+                       
+                        <div className="col-md-6">
+                          <h4><Traduccio string="dubte" /><i class="far fa-envelope ins"></i><a href="/contacte" className="text-white co"><Traduccio string="contacte"/></a></h4>
+                       
+                                
+                            
                         </div>
                     </div>
                     <div className="row">
-                        <p className="col-sm">
-                            &copy;{new Date().getFullYear()} MallorcaRustic
-                        </p>
+                        <h6 className="col-sm copy">
+                            &copy;{new Date().getFullYear()} MallorcaRustic | <a href="/accessibilitat" className="text-white"><Traduccio string="accessibilitat"/></a>
+                        </h6>
                     </div>
                 </div>
             </div>

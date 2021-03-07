@@ -1,26 +1,30 @@
 .main-footer{
     color: white;
     background-color: #967adc;
-    padding-top: 3em;
+    padding-top: 3%;
     position: relative;
-    bottom: 0;
+    padding-bottom: 10px;
     width: 100%;
     text-align: center;
+  
 }
 
-a {
-    color: white;
-    text-decoration: none;
-    background-color: transparent;
-}
 
-a:hover {
-    color: whitesmoke;
-    text-decoration: none;
-    background-color: transparent;
-}
 
 h4 {
     color: white;
     font-family: "Bungee";
+}
+.copy{
+    font-family: "Noto Sans JP";
+    padding-top: 2%;
+}
+
+.co{
+    font-family: "Noto Sans JP";
+    font-size: 18px;
+}
+
+.ins{
+    padding-left: 10px ;
 }
