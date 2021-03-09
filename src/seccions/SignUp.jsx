@@ -107,6 +107,13 @@ class SignUp extends Component {
 
         }
 
+        if (this.state.telefon.length > 9) {
+            errors.telefon = <div><br />
+            <p className="errorStyle"><i className="fas fa-exclamation-triangle"></i>Introdueix un telefon valid.</p>
+        </div>
+        correcte = false;
+        }
+
         if (correcte == false) {
             this.setState({
                 errors: errors
@@ -255,17 +262,18 @@ class SignUp extends Component {
                                 <div className="row">
                                     {/* Telefon */}
                                     <div className="col-12 col-md-5 offset-md-1">
-                                        <label htmlFor="telefon"><Traduccio string="tel"/> :</label>
+                                        <label htmlFor="telefon">Telefon:</label>
 
                                         <input
                                             type="text"
                                             onChange={this.onChange}
                                             value={this.state.telefon}
-                                            error={errors.name}
+
                                             id="telefon"
-                                            className={classnames("form-control in", { invalid: errors.name })}
-                                            
+                                            className={classnames("form-control", { invalid: errors.telefon })}
+                                            placeholder="(No obligatori)..."
                                         />
+                                        <span className="text-danger">{errors.telefon}</span>
                                     </div>
                                     {/* Email */}
                                     <div className="col-12 col-md-5">
