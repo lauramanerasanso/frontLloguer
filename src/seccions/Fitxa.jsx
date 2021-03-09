@@ -204,8 +204,10 @@ class Fitxa extends React.Component {
         sessionStorage.setItem("preuTotal", preu);
       });
   }
+  
   changePantallaReserva() {
-    this.sessionDates();
+
+    this.calculPreu();
     this.setState({ goReserva: true })
   }
 
