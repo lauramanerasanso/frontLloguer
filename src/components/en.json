@@ -79,7 +79,14 @@
     "p3-access" : "Some operating systems allow you to be configured to read text out, and even extend certain parts of the screen. Even though our web site provide alternative text for the no text elements and it’s responsive, we recommend that you check that it works properly if you use your own software before performing any interaction on the Web.",
     "nivell" : "ACCESSIBILITY LEVEL",
     "p4-access" : "In order to have a regulation and guarantee that the largest number of users can access the web sites W3C have bring some accessibility tips, called WCAG 2.0, these tips provide a mark acording to the accessibility level of your web site, in the case of Mallorca Rustic we have get a level AAA.",
-    "dubte" : "Do you have any questions?"
+    "dubte" : "Do you have any questions?",
+    "dades-casa" : "House information",
+    "dades-client" : "Customer information",
+    "altres-dates" : "Do you want to book on another dates?",
+    "pagar" : "Confirm and pay",
+    "segur-pagar" : "Sure do you want to pay?",
+    "error-pagament" : "Something was wrong with the payment"
+
 
 
 

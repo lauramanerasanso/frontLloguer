@@ -18,6 +18,8 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { Helmet } from 'react-helmet';
 import Traduccio from "../components/Traduccio";
 
+import { Table } from 'react-bootstrap';
+
 const ExampleCustomInput = ({ value, onClick }) => (
   <input className="form-control" value={value} onClick={onClick} />
 );
@@ -43,6 +45,20 @@ class Fitxa extends React.Component {
       disableDates: [],
       preuTotal: 0,
       goReserva: false,
+      dataEntrada: sessionStorage.getItem("dataInici"),
+      dataSortida: sessionStorage.getItem("dataFi"),
+      preuReserva: sessionStorage.getItem("preuTotal"),
+      showConfirm: false,
+      ds_params: "",
+      ds_version: "",
+      ds_signature: "",
+      codiPagament : ""
+    }
+
+    if (props != null) {
+      if (props.match.params.esReserva === "pagament") {
+        this.state.goReserva = true;
+      }
     }
 
     this.handleOnClick = this.handleOnClick.bind(this);
@@ -50,7 +66,31 @@ class Fitxa extends React.Component {
     this.sessionDates = this.sessionDates.bind(this);
     this.changePantallaReserva = this.changePantallaReserva.bind(this);
     this.handleCalendarClose = this.handleCalendarClose.bind(this);
+    this.anarPagament = this.anarPagament.bind(this);
+    this.anarModalPagar = this.anarModalPagar.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+  
+  }
 
+  handleClose() {
+    this.setState({ showConfirm: false })
+    var bodyEliminarReserva = new FormData();
+
+    bodyEliminarReserva.append('codiPagament', this.state.codiPagament);
+
+
+    axios({
+      method: 'post',
+      url: 'https://api.mallorcarustic.me/reserva/eliminar',
+      data: bodyEliminarReserva,
+      headers: { 'Content-Type': 'multipart/form-data' }
+    }).then(response => {
+      const del = response.data;
+
+      if(del !== "ERROR"){
+        this.setState({codiPagament: ""});
+      }
+    });
   }
 
   componentDidMount() {
@@ -161,7 +201,7 @@ class Fitxa extends React.Component {
 
         this.setState({ preuTotal: preu });
 
-
+        sessionStorage.setItem("preuTotal", preu);
       });
   }
   changePantallaReserva() {
@@ -217,6 +257,74 @@ class Fitxa extends React.Component {
 
   handleCalendarClose() {
     this.setState({ calendariSortidaOpen: true });
+  }
+
+  anarPagament() {
+
+    var bodyPagament = new FormData();
+
+    bodyPagament.append('Ds_MerchantParameters', this.state.ds_params);
+    bodyPagament.append('Ds_SignatureVersion', this.state.ds_version);
+    bodyPagament.append('Ds_Signature', this.state.ds_signature);
+
+    axios({
+      method: 'post',
+      url: 'https://sis-t.redsys.es:25443/sis/realizarPago',
+      data: bodyPagament,
+      headers: { 'Content-Type': 'multipart/form-data' }
+    }).then(response => {
+
+      const dates = response.data;
+      console.log(dates);
+
+    });
+
+
+  }
+
+  anarModalPagar() {
+    let i = this.props.match.params.id;
+
+    var bodyFormData = new FormData();
+
+    bodyFormData.append('preu_total', this.state.preuReserva);
+
+    axios({
+      method: 'post',
+      url: 'https://api.mallorcarustic.me/pagament/generar',
+      data: bodyFormData,
+      headers: { 'Content-Type': 'multipart/form-data' }
+    }).then(response => {
+      const variables = response.data;
+
+      this.setState({ ds_params: variables["params"] });
+      this.setState({ ds_version: variables["version"] });
+      this.setState({ ds_signature: variables["signature"] });
+      this.setState({ showConfirm: true });
+    });
+
+    var BodyInsertReserva = new FormData();
+
+    BodyInsertReserva.append('id_casa', i);
+    BodyInsertReserva.append('token', localStorage.getItem('token'));
+    BodyInsertReserva.append('data_inici', this.state.dataEntrada);
+    BodyInsertReserva.append('data_fi', this.state.dataSortida);
+    BodyInsertReserva.append('preu_total', this.state.preuReserva);
+
+    axios({
+      method: 'post',
+      url: 'https://api.mallorcarustic.me/reserva/inserir',
+      data: BodyInsertReserva,
+      headers: { 'Content-Type': 'multipart/form-data' }
+    }).then(response => {
+      const insert = response.data;
+
+      if(insert !== "ERROR"){
+        this.setState({codiPagament: insert});
+      }
+    });
+
+
   }
 
   render() {
@@ -437,8 +545,109 @@ class Fitxa extends React.Component {
               <Helmet>
                 <title> RESERVA · Mallorca Rustic</title>
               </Helmet>
-              Pantalla reserva
+              <div className="container fitxa">
+                <div className="row col">
+                  <Link to={"/casa/" + this.state.info[0].id}>
+                    <Traduccio string="altres-dates" />
+                  </Link>
+                </div>
+                <div className="row">
+                  <div className="col">
+                    <Table bordered>
+                      <thead>
+                        <tr>
+                          <th colSpan="4"><Traduccio string="dades-reserva" /></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong><Traduccio string="entrada" /> : </strong>{this.state.dataEntrada}</td>
+                          <td><Traduccio string="desde-hores" /></td>
+                          <td><strong><Traduccio string="sortida" /> : </strong>{this.state.dataSortida}</td>
+                          <td><Traduccio string="fins-hores" /></td>
+                        </tr>
+                        <tr>
+                          <td colSpan="4"> <Traduccio string="preu" /> {this.state.preuReserva} €</td>
+                        </tr>
+                      </tbody>
+                    </Table>
+                  </div>
+                </div>
+
+                <div className="row">
+                  <div className="col">
+                    <div className="card mb-3" >
+                      <div className="row no-gutters">
+                        <div className=" col-md-6 col-lg-4">
+                          <img className="card-img" src={"https://admin.mallorcarustic.me/imatges/" + this.state.info[0].img_principal} alt={this.state.info[0].tradDescripcio} />
+                        </div>
+                        <div className=" col-md-6 col-lg-8">
+                          <div className="card-body">
+                            <h5 className="card-title titol">{this.state.info[0].traduccioNom}</h5>
+                            <p className="card-text"><small className="text-muted">{this.state.info[0].nom}, Illes Balears.</small></p>
+                            <p className="card-text">
+
+                              <div className="row">
+                                <div className="col-6 col-md-3">
+                                  <i className="fas fa-bed"></i> {this.state.info[0].nHabitacions}
+                                </div>
+                                <div className="col-6 col-md-3">
+                                  <i className="fas fa-bath"></i> {this.state.info[0].nBanys}
+                                </div>
+                              </div>
+                              <hr />
+                              <div className="row">
+                                {this.state.caract.map(function (caract) {
+                                  return (
+                                    <div className=" col-md-6 col-lg-3">
+                                      <Icon tipo={caract.caracteristica_id - 1} />  {caract.traduccioNom}
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-6 ml-auto">
+                    <Button variant="primary col botoNM" onClick={this.anarModalPagar}>
+                      <Traduccio string="pagar" />
+                    </Button>
+                  </div>
+                </div>
+              </div>
+              <Modal show={this.state.showConfirm} onHide={this.handleClose}>
+              <form name="from" action="https://sis-t.redsys.es:25443/sis/realizarPago" method="POST">
+                <Modal.Body>
+                  <div className="row col">
+                    <Traduccio string="segur-pagar" />
+                    
+                      <input type="hidden" name="Ds_SignatureVersion" value={this.state.ds_version} />
+                      <input type="hidden" name="Ds_MerchantParameters" value={this.state.ds_params} />
+                      <input type="hidden" name="Ds_Signature" value={this.state.ds_signature} />
+
+                      <input type="hidden" name="data_entrada" value={this.state.dataEntrada} />
+                      <input type="hidden" name="data_sortida" value={this.state.dataSortida} />
+                      <input type="hidden" name="id_casa" value={this.props.match.params.id} />
+                      <input type="hidden" name="preu_final" value={this.state.preuReserva} />
+                  </div>
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button variant="secondary botoNM" onClick={this.handleClose}>
+                    <Traduccio string="tancar" />
+                  </Button>
+                  <Button variant="primary botoNM" type="submit">
+                        <Traduccio string="pagar" />
+                  </Button>
+                </Modal.Footer>
+                </form>
+              </Modal>
             </div>
+
           }
           <div className="footer">
             <Footer />

@@ -15,6 +15,7 @@ import SignUp from './seccions/SignUp';
 import ComprovantReserva from './seccions/ComprovantReserva';
 import Accessibilitat from './seccions/Accessibilitat';
 import Contacte from './seccions/Contacte';
+import RespostaPagament from './seccions/RespostaPagament';
 
 
 class App extends Component {
@@ -168,6 +169,8 @@ class App extends Component {
             
             <Route path="/casa/:id" render={() => <Fitxa key={"fitxa-"+this.state.llenguatge} comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} canviarLlenguatge={this.canviarLlenguatge} loggeat={this.state.iniciat} />} />
             
+            <Route path="/reservar/:id/:esReserva" render={() => <Fitxa key={"fitxa-"+this.state.llenguatge} comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} canviarLlenguatge={this.canviarLlenguatge} loggeat={this.state.iniciat} />} />
+
             <Route exact path="/reserves" render={() => <Reserves key={"reserves-"+this.state.llenguatge} comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} canviarLlenguatge={this.canviarLlenguatge} />} />
             
             <Route exact path="/configuracio" render={() => <Configuracio key={"conf-"+this.state.llenguatge} tancarSessio={this.tancarSessio} canviarLlenguatge={this.canviarLlenguatge} />} />
@@ -175,8 +178,11 @@ class App extends Component {
             <Route path="/reserva/:idCasa/:di" render={() => <ComprovantReserva key={"comprovant-"+this.state.llenguatge} comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} canviarLlenguatge={this.canviarLlenguatge}  />} />
             
             <Route exact path="/accessibilitat" render={() => <Accessibilitat key={"accessibilitat-"+this.state.llenguatge} comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} canviarLlenguatge={this.canviarLlenguatge} />} />
+            
             <Route exact path="/contacte" render={() => <Contacte key={"cont-"+this.state.llenguatge} comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} canviarLlenguatge={this.canviarLlenguatge} />} />
 
+            <Route exact path="/pagament/rebre" render={() => <RespostaPagament key={"respostaPagament-"+this.state.llenguatge} comprovarSessio={this.comprovarSessio} tancarSessio={this.tancarSessio} canviarLlenguatge={this.canviarLlenguatge} />} />
+            
             
           </div>
 

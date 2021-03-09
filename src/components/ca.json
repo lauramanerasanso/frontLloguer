@@ -79,7 +79,13 @@
     "p3-access" : "Alguns sistemes operatius permeten ser configurats perquè llegeixin text en veu alta, i fins i tot ampliar parts determinades de la pantalla. Malgrat que la nostra web proporciona text alternatiu pels elements que no són de text i és adaptable a la mida del dispositiu, recomanem que comprovis que funciona correctament si fas ús d'un programari propi abans de realitzar qualsevol interacció en la Web.",
     "nivell" : "NIVELL D'ACCESSIBILITAT",
     "p4-access" : "Per tenir un control i assegurar que el major nombre d’usuaris possible pot accedir als llocs web W3C ha tret unes pautes d’accessibilitat, anomenades WCAG 2.0, que proporcionen una qualificació en funció del nivell d’accessibilitat que compleix el lloc web, en el cas de Mallorca Rustic hem optingut un nivell AAA.",
-    "dubte" : "Tens cap dubte?"
+    "dubte" : "Tens cap dubte?",
+    "dades-casa" : "DADES DE LA CASA",
+    "dades-client" : "DADES DEL CLIENT",
+    "altres-dates" : "Vols reservar en unes altres dates?",
+    "pagar" : "Confirmar i pagar",
+    "segur-pagar" : "Segur que vols pagar?",
+    "error-pagament" : "Alguna cosa del pagament ha fallat"
 
 
 
