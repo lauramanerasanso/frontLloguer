@@ -204,7 +204,7 @@ class Fitxa extends React.Component {
         sessionStorage.setItem("preuTotal", preu);
       });
   }
-  
+
   changePantallaReserva() {
 
     this.calculPreu();
@@ -521,9 +521,11 @@ class Fitxa extends React.Component {
                           </div>
                           :
                           <div className="col">
-                            <Button variant="primary col" onClick={this.changePantallaReserva}>
-                            <Traduccio string="reserva"/>
-                          </Button>
+                            <Link to={"/reservar/" + this.state.info[0].id + "/pagament"}>
+                              <Button variant="primary col" onClick={this.changePantallaReserva}>
+                                <Traduccio string="reserva" />
+                              </Button>
+                            </Link>
                           </div>
                         }
                       </div>
