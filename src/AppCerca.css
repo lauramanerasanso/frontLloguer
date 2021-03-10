@@ -19,10 +19,18 @@
     margin-left: 10%;
 }
 
+.eliminarFiltres{
+    color: #C0C0C0 !important;
+}
+
 .filtresActius{
     color: #C0C0C0;
 }
 
 .eliminarFiltres:hover {
-    color: #707070;
+    color: #967adc !important;
+}
+
+.btFiltres{
+    margin-top: 5px;
 }

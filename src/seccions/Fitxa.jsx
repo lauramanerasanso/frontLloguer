@@ -17,8 +17,8 @@ import { Link } from 'react-router-dom';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Helmet } from 'react-helmet';
 import Traduccio from "../components/Traduccio";
-
 import { Table } from 'react-bootstrap';
+import { animateScroll as scroll } from 'react-scroll';
 
 const ExampleCustomInput = ({ value, onClick }) => (
   <input className="form-control" value={value} onClick={onClick} />
@@ -52,7 +52,7 @@ class Fitxa extends React.Component {
       ds_params: "",
       ds_version: "",
       ds_signature: "",
-      codiPagament : ""
+      codiPagament: ""
     }
 
     if (props != null) {
@@ -69,7 +69,11 @@ class Fitxa extends React.Component {
     this.anarPagament = this.anarPagament.bind(this);
     this.anarModalPagar = this.anarModalPagar.bind(this);
     this.handleClose = this.handleClose.bind(this);
-  
+    this.scrollToTop = this.scrollToTop.bind(this);
+  }
+
+  scrollToTop() {
+    scroll.scrollToTop();
   }
 
   handleClose() {
@@ -87,8 +91,8 @@ class Fitxa extends React.Component {
     }).then(response => {
       const del = response.data;
 
-      if(del !== "ERROR"){
-        this.setState({codiPagament: ""});
+      if (del !== "ERROR") {
+        this.setState({ codiPagament: "" });
       }
     });
   }
@@ -321,8 +325,8 @@ class Fitxa extends React.Component {
     }).then(response => {
       const insert = response.data;
 
-      if(insert !== "ERROR"){
-        this.setState({codiPagament: insert});
+      if (insert !== "ERROR") {
+        this.setState({ codiPagament: insert });
       }
     });
 
@@ -333,7 +337,7 @@ class Fitxa extends React.Component {
     if (this.state.info.length > 0 && this.state.caract.length > 0) {
       return (
         <div>
-          <NouHeader tancarSessio={this.props.tancarSessio}  canviarLlenguatge={this.props.canviarLlenguatge} />
+          <NouHeader tancarSessio={this.props.tancarSessio} canviarLlenguatge={this.props.canviarLlenguatge} />
           {!this.state.goReserva ?
             <div className="container fitxa">
               <Helmet>
@@ -371,7 +375,7 @@ class Fitxa extends React.Component {
                   <h6 className="pob">{this.state.info[0].nom}, Illes Balears. </h6>
                 </div>
                 <div className="col-md-3">
-                  <Button variant="outline-primary" className="boto" onClick={() => this.setState({ show: true })}><Traduccio string="imatges" /></Button>
+                  <Button variant="outline-primary col" className="boto" onClick={() => this.setState({ show: true })}><Traduccio string="imatges" /></Button>
 
 
                   <Modal
@@ -420,7 +424,7 @@ class Fitxa extends React.Component {
               </div>
 
               <div className="row">
-                <div className="col-md-6">
+                <div className="col-md-7">
                   <h5>{this.state.info[0].tradDescripcio}</h5>
                   <h6 className="serveis serv"><Traduccio string="distribucio" /></h6>
                   <div className="row">
@@ -454,13 +458,13 @@ class Fitxa extends React.Component {
 
                   </ul>
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-5">
                   <div className="tarifes">
                     <h3 className="nom text-center"> <Traduccio string="disponible" /></h3>
                     <div className="container">
                       <div className="row">
                         <div className="col-6 dates">
-                          <Label text={<Traduccio string="entrada"/>} classe="text-center" />
+                          <Label text={<Traduccio string="entrada" />} classe="text-center" />
                           <DatePicker
                             customInput={<ExampleCustomInput />}
                             dateFormat="yyyy-MM-dd"
@@ -477,7 +481,7 @@ class Fitxa extends React.Component {
 
                         </div>
                         <div className="col-6 dates">
-                          <Label text={<Traduccio string="sortida"/>} classe="text-center" />
+                          <Label text={<Traduccio string="sortida" />} classe="text-center" />
                           <DatePicker
                             customInput={<ExampleCustomInput />}
                             dateFormat="yyyy-MM-dd"
@@ -498,12 +502,12 @@ class Fitxa extends React.Component {
                       <div className="row">
 
                         <div className="col-12">
-                          <Button variant="outline-primary col" className="botoPreu" onClick={this.calculPreu}><Traduccio string="calcula-preu"/></Button>
+                          <Button variant="outline-primary col" className="botoPreu" onClick={this.calculPreu}><Traduccio string="calcula-preu" /></Button>
                         </div>
                         <br />
                         <br />
                         <div className="col preu">
-                          {(this.state.preuTotal === 0 ? "" : <><Traduccio string="preu"/>{ this.state.preuTotal + " € "}</>)}
+                          {(this.state.preuTotal === 0 ? "" : <><Traduccio string="preu" />{this.state.preuTotal + " € "}</>)}
                         </div>
 
                       </div>
@@ -512,10 +516,10 @@ class Fitxa extends React.Component {
                       <div className="row">
                         {!this.props.loggeat ?
                           <div className="row col">
-                            <div className="col-7"> <Traduccio string="inici-reserva"/></div>
+                            <div className="col-7"> <Traduccio string="inici-reserva" /></div>
                             <div className="col-5">
                               <Link to="/iniciSessio">
-                                <Button variant="primary col" className="botoModalIniciSessió" onClick={this.sessionDates}><Traduccio string="inici-sessio"/></Button>
+                                <Button variant="primary col" className="botoModalIniciSessió" onClick={this.sessionDates}><Traduccio string="inici-sessio" /></Button>
                               </Link>
                             </div>
                           </div>
@@ -535,11 +539,17 @@ class Fitxa extends React.Component {
               </div>
               <div className="container">
                 <div className="row">
-                  <h6 className="serveis"> <Traduccio string="ubicacio"/> </h6>
+                  <h6 className="serveis"> <Traduccio string="ubicacio" /> </h6>
                 </div>
                 <div className="row">
                   <h6 className="localitzacio">{this.state.info[0].nom}, Illes Balears. </h6>
                   <Maps lat={this.state.info[0].y} lng={this.state.info[0].x} />
+                </div>
+                <br />
+                <div className="row">
+                  <div className="ml-auto">
+                    <a className="btn btn-primary text-center" onClick={this.scrollToTop}><i className="fas fa-chevron-up ic"></i></a>
+                  </div>
                 </div>
               </div>
 
@@ -625,11 +635,11 @@ class Fitxa extends React.Component {
                 </div>
               </div>
               <Modal show={this.state.showConfirm} onHide={this.handleClose}>
-              <form name="from" action="https://sis-t.redsys.es:25443/sis/realizarPago" method="POST">
-                <Modal.Body>
-                  <div className="row col">
-                    <Traduccio string="segur-pagar" />
-                    
+                <form name="from" action="https://sis-t.redsys.es:25443/sis/realizarPago" method="POST">
+                  <Modal.Body>
+                    <div className="row col">
+                      <Traduccio string="segur-pagar" />
+
                       <input type="hidden" name="Ds_SignatureVersion" value={this.state.ds_version} />
                       <input type="hidden" name="Ds_MerchantParameters" value={this.state.ds_params} />
                       <input type="hidden" name="Ds_Signature" value={this.state.ds_signature} />
@@ -638,16 +648,16 @@ class Fitxa extends React.Component {
                       <input type="hidden" name="data_sortida" value={this.state.dataSortida} />
                       <input type="hidden" name="id_casa" value={this.props.match.params.id} />
                       <input type="hidden" name="preu_final" value={this.state.preuReserva} />
-                  </div>
-                </Modal.Body>
-                <Modal.Footer>
-                  <Button variant="secondary botoNM" onClick={this.handleClose}>
-                    <Traduccio string="tancar" />
-                  </Button>
-                  <Button variant="primary botoNM" type="submit">
-                        <Traduccio string="pagar" />
-                  </Button>
-                </Modal.Footer>
+                    </div>
+                  </Modal.Body>
+                  <Modal.Footer>
+                    <Button variant="secondary botoNM" onClick={this.handleClose}>
+                      <Traduccio string="tancar" />
+                    </Button>
+                    <Button variant="primary botoNM" type="submit">
+                      <Traduccio string="pagar" />
+                    </Button>
+                  </Modal.Footer>
                 </form>
               </Modal>
             </div>
@@ -661,9 +671,9 @@ class Fitxa extends React.Component {
     } else {
       return (
         <div>
-          <NouHeader tancarSessio={this.props.tancarSessio} canviarLlenguatge={this.props.canviarLlenguatge}/>
+          <NouHeader tancarSessio={this.props.tancarSessio} canviarLlenguatge={this.props.canviarLlenguatge} />
           <div className="container fitxa nocasa">
-          
+
             <h4><Traduccio string="nocasa" /></h4>
           </div>
         </div>
