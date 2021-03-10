@@ -232,7 +232,7 @@ class Principal extends Component {
                 </div>
                 <Modal show={this.state.show} onHide={this.handleClose}>
                   <Modal.Header closeButton>
-                    <Modal.Title><Traduccio string="filtres" /></Modal.Title>
+                    <Modal.Title className="titol"><Traduccio string="filtres" /></Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
                     <Form>
@@ -252,7 +252,7 @@ class Principal extends Component {
                     </Form>
                   </Modal.Body>
                   <Modal.Footer>
-                    <Button variant="secondary" onClick={this.handleClose}>
+                    <Button variant="outline-primary" onClick={this.handleClose}>
                       <Traduccio string="tancar" />
                     </Button>
                     <Button variant="primary" onClick={this.filtrar}>

@@ -651,7 +651,7 @@ class Fitxa extends React.Component {
                     </div>
                   </Modal.Body>
                   <Modal.Footer>
-                    <Button variant="secondary botoNM" onClick={this.handleClose}>
+                    <Button variant="outline-primary botoNM" onClick={this.handleClose}>
                       <Traduccio string="tancar" />
                     </Button>
                     <Button variant="primary botoNM" type="submit">
