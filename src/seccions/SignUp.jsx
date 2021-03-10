@@ -153,7 +153,7 @@ class SignUp extends Component {
             } else if (res.data == "OK") {
                 
                 this.setState({ content: <Traduccio string="ok"/>,show: true });
-            
+                window.location = "/";
             } else {
                 
                 this.setState({ content: <Traduccio string="error-servidor"/>,show: true });
@@ -377,7 +377,7 @@ class SignUp extends Component {
                     </Modal.Header>
                     <Modal.Body>{this.state.content}</Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={this.handleClose.bind(this)}>
+                        <Button variant="primary" onClick={this.handleClose.bind(this)}>
                         <Traduccio string="tancar"/>
                         </Button>
 
