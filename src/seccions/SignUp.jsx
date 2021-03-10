@@ -263,7 +263,7 @@ class SignUp extends Component {
                                 <div className="row">
                                     {/* Telefon */}
                                     <div className="col-12 col-md-5 offset-md-1">
-                                        <label htmlFor="telefon">Telefon:</label>
+                                        <label htmlFor="telefon"><Traduccio string="tel"/></label>
 
                                         <input
                                             type="text"
@@ -272,7 +272,7 @@ class SignUp extends Component {
 
                                             id="telefon"
                                             className={classnames("form-control", { invalid: errors.telefon })}
-                                            placeholder="(No obligatori)..."
+                                            
                                         />
                                         <span className="text-danger">{errors.telefon}</span>
                                     </div>
