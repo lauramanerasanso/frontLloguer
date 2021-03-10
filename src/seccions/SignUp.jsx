@@ -26,6 +26,7 @@ class SignUp extends Component {
             poblacio: "",
             errors: {},
             content: "",
+            creat : false,
         };
     }
 
@@ -152,8 +153,8 @@ class SignUp extends Component {
                 
             } else if (res.data == "OK") {
                 
-                this.setState({ content: <Traduccio string="ok"/>,show: true });
-                window.location = "/";
+                this.setState({ creat : true});
+
             } else {
                 
                 this.setState({ content: <Traduccio string="error-servidor"/>,show: true });
@@ -373,11 +374,24 @@ class SignUp extends Component {
 
                 <Modal show={this.state.show} onHide={this.handleClose.bind(this)}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Atenció!</Modal.Title>
+                        <Modal.Title><Traduccio string="atencio"/></Modal.Title>
                     </Modal.Header>
                     <Modal.Body>{this.state.content}</Modal.Body>
                     <Modal.Footer>
                         <Button variant="primary" onClick={this.handleClose.bind(this)}>
+                        <Traduccio string="tancar"/>
+                        </Button>
+
+                    </Modal.Footer>
+                </Modal>
+
+                <Modal show={this.state.creat} onHide={() => window.location="/"}>
+                    <Modal.Header closeButton>
+                        <Modal.Title><Traduccio string="enhorabona"/></Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body><Traduccio string="ok"/></Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="primary" onClick={() => window.location="/"}>
                         <Traduccio string="tancar"/>
                         </Button>
 

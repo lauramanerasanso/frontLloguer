@@ -85,7 +85,9 @@
     "altres-dates" : "Vols reservar en unes altres dates?",
     "pagar" : "Confirmar i pagar",
     "segur-pagar" : "Segur que vols pagar?",
-    "error-pagament" : "Alguna cosa del pagament ha fallat"
+    "error-pagament" : "Alguna cosa del pagament ha fallat",
+    "atencio" : "Atenció!",
+    "enhorabona" : "Enhorabona!"
 
 
 

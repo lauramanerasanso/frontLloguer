@@ -85,7 +85,9 @@
     "altres-dates" : "Do you want to book on another dates?",
     "pagar" : "Confirm and pay",
     "segur-pagar" : "Sure do you want to pay?",
-    "error-pagament" : "Something was wrong with the payment"
+    "error-pagament" : "Something was wrong with the payment",
+    "atencio" : "Atention!",
+    "enhorabona" : "Congratulations!"
 
 
 
